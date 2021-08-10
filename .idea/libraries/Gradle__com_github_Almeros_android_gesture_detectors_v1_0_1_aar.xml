@@ -1,0 +1,16 @@
+<component name="libraryTable">
+  <library name="Gradle: com.github.Almeros:android-gesture-detectors:v1.0.1@aar">
+    <CLASSES>
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/a105b4ef730eed96beb8390788ed7a2f/jetified-android-gesture-detectors-v1.0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/38c034de7f56711fac20b690ad13e4d7/jetified-android-gesture-detectors-v1.0.1/res" />
+      <root url="file://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/38c034de7f56711fac20b690ad13e4d7/jetified-android-gesture-detectors-v1.0.1/AndroidManifest.xml" />
+      <root url="jar://$USER_HOME$/.gradle/caches/transforms-2/files-2.1/38c034de7f56711fac20b690ad13e4d7/jetified-android-gesture-detectors-v1.0.1/jars/classes.jar!/" />
+    </CLASSES>
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Almeros/android-gesture-detectors/v1.0.1/e89fb955f0edf43d569634cb97fd9e11dd0d85f3/android-gesture-detectors-v1.0.1-javadoc.jar!/" />
+    </JAVADOC>
+    <SOURCES>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.github.Almeros/android-gesture-detectors/v1.0.1/3479999669c244507e4e2af48b9e45699a8c6878/android-gesture-detectors-v1.0.1-sources.jar!/" />
+    </SOURCES>
+  </library>
+</component>

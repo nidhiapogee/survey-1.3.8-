@@ -1,0 +1,287 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/matchParent"
+    android:orientation="vertical"
+    tools:context=".CRS_sattelite">
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool"
+       style="@style/matchWarp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+    <ProgressBar
+        android:id="@+id/progress"
+        android:layout_marginTop="-7dp"
+        android:layout_marginBottom="-7dp"
+        android:indeterminate="true"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal" />
+
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:layout_weight="2"
+        android:layout_height="0dp">
+
+        <ImageView
+            android:id="@+id/mImgRadarBack"
+            android:layout_width="@dimen/three_fifty_dp"
+            android:layout_height="@dimen/three_fifty_dp"
+            android:layout_centerInParent="true"
+            android:background="@drawable/pngwingcom" />
+
+        <com.apogee.surveydemo.Sattelite.Skyview
+            android:id="@+id/mRadarCustom"
+            android:layout_width="@dimen/three_fifty_dp"
+            android:layout_height="@dimen/three_fifty_dp"
+            android:layout_centerInParent="true"/>
+
+    </RelativeLayout>
+
+
+    <ScrollView
+        style="@style/matchWarp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1.5"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+            <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                android:id="@+id/listing"
+                style="@style/wrapContent"
+                android:layout_gravity="end"
+                android:layout_marginEnd="@dimen/_10sdp"
+                app:floating_background_color="@color/color_bluedark"
+                app:floating_title="Listing"
+                app:floating_title_color="@android:color/white"
+                app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_weight="1.5"
+                android:layout_height="0dp">
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        style="@style/matchWarp"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:background="@color/colorgreen"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"/>
+
+
+                        <TextView
+                            android:id="@+id/stgps"
+                            style="@style/wrapMatch"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_size_twelve"
+                            android:text="@string/gps"
+                            android:textColor="@color/textColorBlack"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/matchWarp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:background="@color/coloryellow"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"/>
+
+
+                        <TextView
+                            style="@style/wrapMatch"
+                            android:id="@+id/stglonass"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_size_twelve"
+                            android:text="@string/glonass"
+                            android:textColor="@color/textColorBlack"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/matchWarp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:background="@color/color_blued"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"/>
+
+
+                        <TextView
+                            style="@style/wrapMatch"
+                            android:id="@+id/stsbas"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_size_twelve"
+                            android:text="@string/sbas"
+                            android:textColor="@color/textColorBlack"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/matchWarp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:background="@color/colorlightblue"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"/>
+
+
+                        <TextView
+                            style="@style/wrapMatch"
+                            android:id="@+id/stgalieleo"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_size_twelve"
+                            android:text="@string/galileo"
+                            android:textColor="@color/textColorBlack"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/matchWarp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:background="@color/coloret"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"/>
+
+
+                        <TextView
+                            style="@style/wrapMatch"
+                            android:id="@+id/stbeidou"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_size_twelve"
+                            android:text="@string/beidou"
+                            android:textColor="@color/textColorBlack"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="@dimen/_170sdp"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/sats"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/postn"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/hzpcn"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/vtpcn"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/hdop"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/vdop"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+    </ScrollView>
+
+</LinearLayout>
+
+

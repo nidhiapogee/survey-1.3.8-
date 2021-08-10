@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    style="@style/matchParent"
+    android:background="@color/color_bluedark">
+
+
+    <RelativeLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="@dimen/_310sdp"
+        android:layout_height="@dimen/_310sdp"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="@dimen/_minus83sdp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/rectangle"
+        android:rotation="-45">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/card_view"
+            style="@style/matchParent"
+            android:layout_marginEnd="@dimen/_10sdp"
+            android:layout_marginBottom="@dimen/_10sdp"
+            card_view:cardBackgroundColor="@android:color/white"
+            card_view:cardCornerRadius="@dimen/_20sdp"
+            card_view:cardElevation="@dimen/_5sdp"
+            card_view:cardUseCompatPadding="true">
+
+            <LinearLayout
+                style="@style/wrapContent"
+                android:layout_marginLeft="@dimen/_50sdp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginRight="@dimen/_50sdp"
+                android:orientation="vertical"
+                android:rotation="45">
+
+                <ImageView
+                    style="@style/wrapContent"
+                    android:src="@drawable/splashsurveyorimg" />
+
+
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+
+
+    <Button
+        android:id="@+id/btn_letstart"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_200sdp"
+        android:background="@drawable/rounbutton"
+        android:drawableEnd="@drawable/next"
+        android:drawablePadding="@dimen/_5sdp"
+        android:elevation="@dimen/_5sdp"
+        android:fontFamily="sans-serif"
+        android:padding="@dimen/_13sdp"
+        android:stateListAnimator="@null"
+        android:text="@string/lets_start"
+        android:textAllCaps="true"
+        android:textAppearance="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_fifteen"
+        android:translationZ="@dimen/_5sdp" />
+
+
+    <Button
+        android:id="@+id/btn_ip"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:layout_marginEnd="@dimen/_50sdp"
+        android:layout_marginBottom="@dimen/_130sdp"
+        android:background="@drawable/rounbutton"
+        android:drawableEnd="@drawable/next"
+        android:drawablePadding="@dimen/_5sdp"
+        android:elevation="@dimen/_5sdp"
+        android:fontFamily="sans-serif"
+        android:padding="@dimen/_13sdp"
+        android:stateListAnimator="@null"
+        android:text="@string/change_ip_port"
+        android:textAllCaps="true"
+        android:textAppearance="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_fifteen"
+        android:translationZ="@dimen/_5sdp" />
+
+</RelativeLayout>

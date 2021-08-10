@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/matchWarp">
+
+    <TableRow
+        android:layout_marginEnd="@dimen/five_dp">
+        <ImageView
+            android:id="@+id/record_image"
+            android:layout_width="@dimen/eighty_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:fontFamily="serif"
+            android:src="@mipmap/ic_launcher"
+            android:background="@drawable/cell_shape" />
+        <TextView
+            android:id="@+id/record_area_name"
+            android:layout_width="@dimen/hundred_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/area_name" />
+
+        <TextView
+            android:id="@+id/record_point_name"
+            android:layout_width="@dimen/hundred_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/point_name_new" />
+
+        <TextView
+            android:id="@+id/record_latitude"
+            android:layout_width="@dimen/hundred_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/latitude"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/record_longitude"
+            android:layout_width="@dimen/hundred_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/longitude"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/record_altitude"
+            android:layout_width="@dimen/hundred_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/altitude"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/record_accuracy"
+            android:layout_width="@dimen/hundred_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/accuracy"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/record_createat"
+            android:layout_width="@dimen/hundred_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/createat"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/record_status"
+            android:layout_width="@dimen/hundred_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/status_new" />
+
+        <Button
+            android:id="@+id/viewmap"
+            android:layout_width="@dimen/hundred_dp"
+            android:layout_height="@dimen/eighty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/view_map" />
+
+    </TableRow>
+</TableLayout>

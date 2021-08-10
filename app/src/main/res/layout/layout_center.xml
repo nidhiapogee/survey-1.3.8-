@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/wrapContent">
+
+    <TextView
+        android:layout_width="@dimen/forty_five"
+        android:layout_height="@dimen/forty_five"
+        android:gravity="center"
+        android:text="@string/dot"
+        android:id="@+id/mTVText"
+        android:textColor="@android:color/white"
+        android:textSize="@dimen/twenty_sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</RelativeLayout>

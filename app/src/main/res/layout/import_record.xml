@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/wrapContent">
+
+
+    <TableRow
+        android:layout_marginEnd="@dimen/five_dp">
+
+        <TextView
+            android:id="@+id/snno"
+            android:layout_width="@dimen/eighty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/sno" />
+
+        <TextView
+            android:id="@+id/Point_name"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/point_name" />
+
+        <TextView
+            android:id="@+id/Easting"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/easting"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/Northing"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/northing"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/Elevation"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/elevation"
+            android:textColor="@color/black"  />
+
+        <TextView
+            android:id="@+id/Point_code"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/point_code"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/Horizontal_Precision"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/horizontal_precision"
+            android:textColor="@color/black"  />
+
+        <TextView
+            android:id="@+id/Vertical_Precision"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:text="@string/vertical_precision"
+            android:textColor="@color/black" />
+
+        <TextView
+            android:id="@+id/Date"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/date" />
+
+        <TextView
+            android:id="@+id/Time"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/time" />
+
+
+        <TextView
+            android:id="@+id/Antenna_Height"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/antenna_height" />
+
+        <TextView
+            android:id="@+id/Record_Type"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/reord_type" />
+
+        <TextView
+            android:id="@+id/Precision_Type"
+            android:layout_width="@dimen/one_sixty_dp"
+            android:layout_height="@dimen/thirty_dp"
+            android:background="@drawable/cell_shape"
+            android:fontFamily="serif"
+            android:textColor="@color/black"
+            android:text="@string/precision_type" />
+
+    </TableRow>
+</TableLayout>

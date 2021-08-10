@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/matchWarp"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/txtdrop"
+        style="@style/matchWarp"
+        android:textColor="@color/textColorPrimary"
+        android:textSize="@dimen/text_size_eighteen"
+        android:layout_margin="@dimen/ten_dp"
+        android:layout_weight="0.5"
+        android:textStyle="bold"
+        android:text="TextView" />
+
+    <Spinner
+        style="@style/matchWarp"
+        android:id="@+id/spindrop"
+        android:layout_margin="@dimen/ten_dp"
+        android:drawSelectorOnTop="true"
+        android:entries="@array/array_name"
+        android:layout_weight="0.5" />
+</LinearLayout>

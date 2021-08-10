@@ -1,0 +1,13 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/matchParent"
+    tools:context="droidmentor.bnv_with_viewpager.Fragment.ChatFragment">
+
+    <!-- TODO: Update blank fragment layout -->
+    <TextView
+       style="@style/wrapContent"
+        android:text="@string/tab2"
+        android:layout_centerInParent="true"
+        android:textSize="@dimen/text_size_thirty" />
+
+</RelativeLayout>

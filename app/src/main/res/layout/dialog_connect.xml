@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/dialog_color">
+
+
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_centerInParent="true"
+        android:padding="@dimen/_5sdp">
+        <ImageView
+            android:id="@+id/iv_chooseoption"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/optionone">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/iv_createanew"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/optiontwo">
+
+        </ImageView>
+
+        <ImageView
+            android:id="@+id/iv_bydeviceId"
+            android:layout_width="@dimen/_200sdp"
+            android:layout_marginTop="@dimen/_5sdp"
+            android:layout_height="wrap_content"
+            android:src="@drawable/optionthree">
+
+        </ImageView>
+    </LinearLayout>
+
+</RelativeLayout>

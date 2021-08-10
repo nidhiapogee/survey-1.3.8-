@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/matchParent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical">
+
+    <Toolbar
+        android:id="@+id/tool"
+        style="@style/matchWarp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" >
+
+        <LinearLayout
+            style="@style/wrapMatch"
+            android:orientation="horizontal">
+
+
+            <LinearLayout
+                style="@style/wrapMatch"
+                android:orientation="horizontal"
+                android:layout_gravity="center"
+                android:layout_marginStart="@dimen/_5sdp">
+
+                <ImageView
+                    android:id="@+id/accuracybase"
+                    android:layout_width="@dimen/thirty_dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:layout_marginStart="1dp"
+                    android:src="@drawable/wifi"/>
+
+
+                <TextView
+                     android:id="@+id/accuracybasetext"
+                    style="@style/wrapContent"
+                     android:layout_marginStart="@dimen/_5sdp"
+                     android:text="@string/_0_0"
+                     android:textColor="@color/white"
+                     android:layout_gravity="center"
+                     android:textSize="@dimen/text_size_twelve"
+                     android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/antennaheight"
+                    android:layout_width="@dimen/thirty_dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:layout_marginStart="@dimen/one_dp"
+                    android:onClick="antennatopo"
+                    android:src="@drawable/tripod"/>
+
+                <TextView
+                    android:id="@+id/antennaht"
+                    style="@style/wrapContent"
+                    android:text="@string/_0_00m"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/text_size_twelve"
+                    android:textStyle="bold" />
+
+
+                <ImageView
+                    android:id="@+id/stlitetopo"
+                    android:layout_width="@dimen/thirty_dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="@dimen/one_dp"
+                    android:layout_marginTop="@dimen/_1sdp"
+                    android:src="@drawable/satellite"
+                    app:tint="@color/white" />
+
+
+                <TextView
+                    android:id="@+id/stliteautosts"
+                    style="@style/wrapContent"
+                    android:text="@string/zero"
+                    android:layout_marginStart="@dimen/_5sdp"
+                    android:textColor="@color/white"
+                    android:layout_gravity="center"
+                    android:textSize="@dimen/text_size_twelve"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+    </Toolbar>
+
+<fragment
+    android:id="@+id/map"
+    android:name="com.google.android.gms.maps.SupportMapFragment"
+    android:layout_width="match_parent"
+    android:layout_height="0dp"
+    android:layout_weight="2.0"
+    tools:context=".AutoMap" />
+    <androidx.cardview.widget.CardView
+        android:layout_gravity="bottom"
+        app:cardCornerRadius="@dimen/_5sdp"
+        app:cardElevation="@dimen/_5sdp"
+        android:layout_margin="@dimen/_5sdp"
+        app:cardBackgroundColor="@color/white"
+        style="@style/matchWarp">
+    <LinearLayout
+        style="@style/matchWarp"
+        android:orientation="vertical">
+
+          <LinearLayout
+              style="@style/matchWarp"
+          android:layout_marginStart="@dimen/_10sdp"
+          android:layout_marginTop="@dimen/_10sdp"
+          android:orientation="horizontal">
+
+              <TextView
+                  android:id="@+id/pointName"
+                  style="@style/wrapContent"
+                  android:textSize="15sp"
+                  android:textStyle="bold"
+                  android:text="@string/name_new" />
+
+              <EditText
+                  android:id="@+id/autopoint"
+                  style="@style/wrapContent"
+                  android:layout_marginStart="@dimen/ten_dp"
+                  android:background="@drawable/editbox"
+                  android:ems="5"
+                  android:inputType="textPersonName"
+                  android:hint="@string/p_name" />
+
+
+
+              <Switch
+                  android:id="@+id/simpleSwitch"
+                  style="@style/wrapContent"
+                  android:checked="true"
+                  android:layout_marginStart="@dimen/_5sdp"
+                  android:text="@string/time"
+                  android:textOff="@string/distance"
+                  android:textOn="@string/time"
+                  tools:ignore="UseSwitchCompatOrMaterialXml" /><!-- text to be displayed whenever current state is checked-->
+
+              <EditText
+                  android:id="@+id/tdval"
+                  android:layout_width="@dimen/_60sdp"
+                  android:layout_height="wrap_content"
+                  android:layout_marginStart="@dimen/_5sdp"
+                  android:ems="5"
+                  android:inputType="textPersonName"
+                  android:hint="Sec" />
+
+          </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginStart="@dimen/_10sdp"
+            style="@style/matchWarp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/textView"
+               style="@style/wrapContent"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:text="@string/code" />
+
+            <EditText
+                android:id="@+id/editText"
+                style="@style/wrapContent"
+                android:layout_marginStart="@dimen/_10sdp"
+                android:background="@drawable/editbox"
+                android:ems="5"
+                android:inputType="numberDecimal"
+                android:hint="@string/p_code" />
+
+
+
+                <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                    android:id="@+id/point"
+                    style="@style/wrapContent"
+                    android:layout_gravity="start|bottom"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    app:floating_background_color="@color/colorgreen"
+                    app:floating_left_icon="@drawable/ic_baseline_location_on_24"
+                    app:floating_title="Point"
+                    app:floating_title_color="@android:color/white"
+                    app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior"
+                    />
+
+
+            <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                android:id="@+id/stakeMap"
+                style="@style/wrapContent"
+                android:layout_gravity="start|bottom"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:floating_background_color="@color/colorgreen"
+                app:floating_left_icon="@drawable/ic_baseline_location_on_24"
+                app:floating_title="Point"
+                app:floating_title_color="@android:color/white"
+                app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior"
+                />
+
+</LinearLayout>
+
+    </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+               <LinearLayout
+                  style="@style/matchWarp"
+                   android:orientation="horizontal">
+
+
+                   <LinearLayout
+                       style="@style/wrapContent"
+                       android:layout_margin="@dimen/ten_dp"
+                       android:orientation="vertical">
+
+
+                       <LinearLayout
+                           style="@style/wrapContent"
+                           android:orientation="horizontal">
+
+                           <TextView
+                               style="@style/wrapContent"
+                               android:layout_gravity="center"
+                               android:text="@string/e"
+                               android:textColor="@color/textColorBlack"
+                               android:textSize="20sp"
+                               android:textStyle="bold" />
+
+                           <TextView
+                               android:id="@+id/nrthngauto"
+                               style="@style/wrapContent"
+                               android:layout_gravity="center"
+                               android:text="@string/default_new"
+                               android:textColor="@color/textColorBlack"
+                               android:textSize="20sp"
+                               android:textStyle="bold" />
+
+
+
+                       </LinearLayout>
+
+                       <LinearLayout
+                           style="@style/wrapContent"
+                           android:orientation="horizontal">
+
+                           <TextView
+                               style="@style/wrapContent"
+                               android:layout_gravity="center"
+                               android:text="@string/n"
+                               android:textColor="@color/textColorBlack"
+                               android:textSize="20sp"
+                               android:textStyle="bold" />
+
+                           <TextView
+                               android:id="@+id/estngauto"
+                               style="@style/wrapContent"
+                               android:layout_gravity="center"
+                               android:text="@string/default_new"
+                               android:textColor="@color/textColorBlack"
+                               android:textSize="20sp"
+                               android:textStyle="bold" />
+
+
+
+                       </LinearLayout>
+
+                   </LinearLayout>
+
+                   <LinearLayout
+                     style="@style/matchWarp"
+                       android:gravity="end"
+                       android:layout_margin="@dimen/_10sdp"
+                       android:orientation="vertical">
+
+
+                       <LinearLayout
+                           style="@style/wrapContent"
+                           android:orientation="horizontal">
+
+                           <TextView
+                               style="@style/wrapContent"
+                               android:layout_gravity="center"
+                               android:text="@string/status"
+                               android:textColor="@color/textColorBlack"
+                               android:textSize="20sp"
+                               android:textStyle="bold" />
+
+                           <TextView
+                               android:id="@+id/status"
+                               style="@style/wrapContent"
+                               android:layout_gravity="center"
+                               android:text="@string/null_new"
+                               android:textColor="@color/textColorBlack"
+                               android:textSize="20sp"
+                               android:textStyle="bold" />
+
+
+
+                       </LinearLayout>
+
+                       <LinearLayout
+                           style="@style/wrapContent"
+                           android:orientation="horizontal">
+
+                           <TextView
+                               style="@style/wrapContent"
+                               android:layout_gravity="center"
+                               android:text="@string/z"
+                               android:textColor="@color/textColorBlack"
+                               android:textSize="20sp"
+                               android:textStyle="bold" />
+
+                           <TextView
+                               android:id="@+id/zval"
+                               style="@style/wrapContent"
+                               android:layout_gravity="center"
+                               android:text="@string/default_new"
+                               android:textColor="@color/textColorBlack"
+                               android:textSize="20sp"
+                               android:textStyle="bold" />
+
+
+
+                       </LinearLayout>
+
+                   </LinearLayout>
+
+               </LinearLayout>
+
+               <androidx.cardview.widget.CardView
+                   android:layout_gravity="bottom"
+                   app:cardCornerRadius="@dimen/_5sdp"
+                   app:cardElevation="@dimen/_5sdp"
+                   android:layout_margin="@dimen/_5sdp"
+                   app:cardBackgroundColor="@color/white"
+                   android:layout_width="match_parent"
+                   android:layout_height="@dimen/_40sdp">
+
+                   <LinearLayout
+                    style="@style/matchParent"
+                       android:layout_marginStart="@dimen/_5sdp"
+                       android:orientation="horizontal">
+
+                       <ImageView
+                           android:id="@+id/btrystats"
+                           android:layout_width="@dimen/thirty_dp"
+                           android:layout_height="match_parent"
+                           android:layout_marginStart="1dp"
+                           android:src="@drawable/batterynostats">
+
+                       </ImageView>
+
+
+
+                       <TextView
+                           android:id="@+id/hzpcn"
+                           style="@style/wrapContent"
+                           android:text="@string/n_a"
+                           android:layout_gravity="center"
+                           android:textColor="@color/black"
+                           android:layout_marginStart="@dimen/_5sdp"
+                           android:textSize="15sp"
+                           android:textStyle="bold" />
+
+
+                       <TextView
+                           android:id="@+id/vtpcn"
+                           style="@style/wrapContent"
+                           android:text="@string/n_a"
+                           android:layout_gravity="center"
+                           android:layout_marginStart="@dimen/_5sdp"
+                           android:textColor="@color/black"
+                           android:textSize="15sp"
+                           android:textStyle="bold" />
+                   </LinearLayout>
+
+               </androidx.cardview.widget.CardView>
+
+</LinearLayout>

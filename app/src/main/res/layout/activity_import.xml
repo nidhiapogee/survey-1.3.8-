@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/matchParent"
+    android:id="@+id/frmlt"
+    tools:context=".Import">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool"
+       style="@style/matchWarp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+    <Button
+        android:id="@+id/button_loadCsv"
+        style="@style/matchWarp"
+        android:layout_marginTop="@dimen/_45sdp"
+        android:background="@color/colorPrimary"
+        android:text="@string/import_file"
+        android:textColor="@color/white"
+        tools:ignore="MissingConstraints" />
+
+    <HorizontalScrollView
+        android:layout_marginTop="@dimen/_85sdp"
+        style="@style/matchParent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:id="@+id/lt2t2"
+            style="@style/matchParent"
+            android:orientation="vertical">
+
+            <TableLayout
+                style="@style/matchWarp">
+                <TableRow android:layout_marginEnd="@dimen/five_dp">
+
+                    <TextView
+
+                        android:layout_width="@dimen/eighty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/s_no"
+                        android:textColor="@color/white" />
+
+                    <TextView
+
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/point_name"
+                        android:textColor="@color/white" />
+
+                    <TextView
+
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/easting"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/northing"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/elevation"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/point_code_new"
+                        android:textColor="@color/white"  />
+
+                    <TextView
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/hz_precision"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/vt_precision"
+                        android:textColor="@color/white"/>
+
+                    <TextView
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/date"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/time"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/antenna_height"
+                        android:textColor="@color/white" />
+
+                    <TextView
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/reord_type"
+                        android:textColor="@color/white"  />
+
+                    <TextView
+                        android:layout_width="@dimen/one_sixty_dp"
+                        android:layout_height="@dimen/forty_dp"
+                        android:background="@drawable/header_cell"
+                        android:fontFamily="serif"
+                        android:text="@string/precision_type"
+                        android:textColor="@color/white"  />
+
+
+
+                </TableRow>
+            </TableLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/records_view"
+                style="@style/matchParent"
+                android:scrollbarStyle="outsideInset"
+                android:scrollbars="horizontal" />
+
+        </LinearLayout>
+
+
+
+
+    </HorizontalScrollView>
+
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_gravity="end|bottom">
+
+        <ru.dimorinny.floatingtextbutton.FloatingTextButton
+            android:id="@+id/importFile"
+            style="@style/wrapContent"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:layout_marginEnd="@dimen/fab_margin"
+            app:floating_background_color="@color/colorPrimary"
+            app:floating_left_icon="@drawable/ic_baseline_save_24"
+            app:floating_title="Import File"
+            app:floating_title_color="@android:color/white"
+            app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+
+        <ru.dimorinny.floatingtextbutton.FloatingTextButton
+            android:id="@+id/save_button"
+            style="@style/wrapContent"
+            android:layout_gravity="end|bottom"
+            android:layout_marginBottom="@dimen/fab_margin"
+            android:layout_marginEnd="@dimen/fab_margin"
+            app:floating_background_color="@color/colorPrimary"
+            app:floating_left_icon="@drawable/ic_baseline_save_24"
+            app:floating_title="Save"
+            app:floating_title_color="@android:color/white"
+            app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+
+
+    </LinearLayout>
+
+
+
+</FrameLayout>

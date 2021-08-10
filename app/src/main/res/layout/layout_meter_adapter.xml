@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="160dp"
+    android:layout_height="180dp"
+    android:layout_margin="@dimen/_10sdp">
+
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="150dp"
+        android:layout_height="180dp"/>
+
+    <ImageButton
+        android:id="@+id/ib_Cancel"
+        style="@style/wrapWrap"
+        android:layout_alignParentEnd="true"
+        android:src="@android:drawable/ic_menu_close_clear_cancel"
+        android:background="@null"/>
+
+
+
+</RelativeLayout>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/p1"
+        android:icon="@drawable/image_project1"
+        android:title="Project"></item>
+
+    <item
+        android:id="@+id/p2"
+        android:icon="@drawable/deviceg"
+        android:title="Device"></item>
+
+    <item
+        android:id="@+id/p3"
+        android:icon="@drawable/ab"
+        android:title="Survey"></item>
+
+
+
+</menu>

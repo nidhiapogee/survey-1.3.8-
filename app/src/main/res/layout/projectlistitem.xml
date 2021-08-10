@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv"
+    style="@style/matchWarp"
+    android:layout_margin="@dimen/_5sdp"
+    card_view:cardCornerRadius="@dimen/five_dp"
+    card_view:cardElevation="@dimen/four_dp"
+    card_view:cardMaxElevation="@dimen/six_dp">
+
+    <LinearLayout
+        style="@style/matchWarp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/pname"
+          style="@style/wrapContent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/five_dp"
+            android:text="@string/project_name"
+            android:textSize="@dimen/text_size_twenty_five" />
+
+        <TextView
+            android:id="@+id/opname"
+            style="@style/wrapContent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/five_dp"
+            android:text="@string/operator"
+            android:textSize="@dimen/text_size_fifteen" />
+
+        <TextView
+            android:id="@+id/datentime"
+            style="@style/wrapContent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/five_dp"
+            android:text="@string/date_n_time"
+            android:textSize="@dimen/text_size_seventeen" />
+
+        <TextView
+            android:id="@+id/timeStamp"
+            style="@style/wrapContent"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/five_dp"
+            android:text="@string/date_n_time"
+            android:textSize="@dimen/text_size_seventeen" />
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+

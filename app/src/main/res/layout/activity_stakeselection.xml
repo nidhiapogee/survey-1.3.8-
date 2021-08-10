@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+   style="@style/matchParent"
+    android:orientation="vertical"
+    tools:context=".Stakeselection">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool"
+        style="@style/matchWarp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" >
+
+        <TextView
+            android:id="@+id/tool_left_title"
+            style="@style/matchParent"
+            android:layout_centerVertical="true"
+            android:background="@color/colorPrimaryDark"
+            android:textColor="@color/white"
+            android:text="@string/stake_point"/>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <LinearLayout
+        android:id="@+id/l1"
+        android:layout_below="@id/tool"
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/_10sdp"
+        android:background="@color/chatreceive"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_20sdp">
+
+        <TextView
+            android:text="@string/survey_type"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:textColor="@color/white"
+            android:textStyle="bold"
+            style="@style/wrapContent"/>
+
+
+        <Spinner
+            android:id="@+id/spndatatype"
+            android:theme="@style/mySpinnerItemStyle"
+            android:layout_marginStart="@dimen/_35sdp"
+            style="@style/matchParent" />
+
+    </LinearLayout>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/stknvgtn"
+       style="@style/matchWarp"
+        android:layout_alignParentBottom="true"
+        app:itemBackground="@android:color/white"
+        app:itemIconTint="@drawable/bottom_navigation_color_selector"
+        app:itemTextColor="@drawable/bottom_navigation_color_selector"
+        app:menu="@menu/stakeselection" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:layout_below="@id/l1"
+       style="@style/matchParent"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_above="@+id/project_navigation"
+        android:id="@+id/stklist"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+        android:orientation="vertical"
+        android:scrollbars="vertical">
+    </androidx.recyclerview.widget.RecyclerView>
+
+</RelativeLayout>

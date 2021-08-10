@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/matchParent" >
+<LinearLayout
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/matchParent"
+    android:orientation="vertical"
+    android:weightSum="2"
+    tools:context=".newproject">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool"
+        style="@style/matchWarp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+    <LinearLayout
+        android:layout_marginStart="@dimen/fab_margin"
+        android:layout_marginEnd="@dimen/fab_margin"
+        style="@style/matchWarp"
+        android:layout_weight="1"
+        android:background="@drawable/bgitemdoes"
+        android:orientation="vertical"
+        android:paddingTop="@dimen/ten_dp">
+
+        <LinearLayout
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:orientation="vertical"
+            style="@style/matchWarp">
+
+            <TextView
+                android:id="@+id/addtitle"
+                android:textSize="@dimen/text_size_eighteen"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/project"
+                android:layout_marginBottom="@dimen/ten_dp"
+                style="@style/matchWarp" />
+
+            <EditText
+                android:id="@+id/ep1"
+                android:inputType="text"
+                android:background="@drawable/bginputtask"
+                android:paddingStart="@dimen/twelve_dp"
+                android:paddingEnd="@dimen/twelve_dp"
+                android:textColorHint="@color/light_gray"
+                android:textColor="@color/colorPrimary"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_five_dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:orientation="vertical"
+            style="@style/matchWarp">
+
+            <TextView
+                android:id="@+id/Person"
+                android:textSize="@dimen/text_size_eighteen"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/operator_new"
+                android:layout_marginBottom="@dimen/ten_dp"
+                android:layout_marginTop="@dimen/ten_dp"
+                style="@style/matchWarp" />
+
+            <EditText
+                android:id="@+id/ep2"
+                android:inputType="text"
+                android:background="@drawable/bginputtask"
+                android:paddingStart="@dimen/twelve_dp"
+                android:paddingEnd="@dimen/twelve_dp"
+                android:textColorHint="@color/light_gray"
+                android:textColor="@color/colorPrimary"
+                android:hint="@string/operator"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_five_dp" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:orientation="vertical"
+            style="@style/matchWarp">
+
+            <TextView
+                android:id="@+id/adddesc"
+                android:textSize="@dimen/text_size_eighteen"
+                android:textColor="@color/colorPrimary"
+                android:text="@string/comment"
+                android:layout_marginBottom="@dimen/ten_dp"
+                style="@style/matchWarp" />
+
+            <EditText
+                android:id="@+id/ep3"
+                android:inputType="text"
+                android:background="@drawable/bginputtask"
+                android:paddingStart="@dimen/twelve_dp"
+                android:paddingEnd="@dimen/twelve_dp"
+                android:textColorHint="@color/light_gray"
+                android:maxLength="250"
+                android:textColor="@color/colorPrimary"
+                android:hint="@string/comment"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/fifty_five_dp" />
+
+        </LinearLayout>
+
+
+          <LinearLayout
+              android:layout_marginTop="@dimen/ten_dp"
+              android:layout_marginEnd="@dimen/fab_margin"
+              android:layout_marginStart="@dimen/fab_margin"
+              android:orientation="vertical"
+              style="@style/matchWarp">
+
+              <TextView
+                  android:id="@+id/typeofsurvey"
+                  android:textSize="@dimen/text_size_eighteen"
+                  android:textColor="@color/colorPrimary"
+                  android:text="@string/datum"
+                  android:layout_marginBottom="@dimen/ten_dp"
+                  style="@style/wrapContent" />
+
+             <Spinner
+                 android:id="@+id/sp1"
+                 android:backgroundTint="@color/color_bluedark"
+                 style="@style/matchParent"/>
+
+          </LinearLayout>
+
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_weight="1"
+        android:layout_height="wrap_content">
+
+
+    <ImageView
+        android:id="@+id/vfp"
+        android:layout_below="@+id/ep3"
+        android:layout_margin="@dimen/_10sdp"
+        android:layout_centerInParent="true"
+        android:background="@drawable/apogee"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/one_fifty_dp"/>
+
+
+    <Button
+        android:id="@+id/okbutton"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/rounbutton"
+        android:layout_marginTop="@dimen/_5sdp"
+        android:layout_marginStart="@dimen/ten_dp"
+        android:layout_marginEnd="@dimen/ten_dp"
+        android:text="@string/ok"
+        android:textColor="@color/white"
+        style="@style/matchWarp" />
+
+    </LinearLayout>
+
+
+</LinearLayout>
+</ScrollView>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/starttime"
+        app:showAsAction="never"
+        android:title="Start time">
+    </item>
+    <item
+        android:id="@+id/endtime"
+        app:showAsAction="never"
+        android:title="End time">
+    </item>
+
+    <item
+        android:id="@+id/ipport"
+        app:showAsAction="never"
+        android:title="IP - Port">
+    </item>
+</menu>

@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.apogee.surveydemo">
+    <!--
+         The ACCESS_COARSE/FINE_LOCATION permissions are not required to use
+         Google Maps Android API v2, but you must specify either coarse or fine
+         location permissions for the 'MyLocation' functionality.
+    -->
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+
+    <uses-feature
+        android:name="android.hardware.bluetooth_le"
+        android:required="true" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.Manifest.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permisson.ACCESS_GPS" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.BLUETOOTH" />
+    <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
+    <uses-permission android:name="android.permission.SYSTEM_ALERT_WINDOW" />
+    <uses-permission android:name="com.google.android.providers.gsf.permission.READ_GSERVICES" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.STORAGE" />
+
+    <supports-screens
+        android:anyDensity="true"
+        android:largeScreens="true"
+        android:normalScreens="true"
+        android:resizeable="true" />
+
+    <application
+        android:name=".ApplicationLoader"
+        android:icon="@drawable/appstore"
+        android:label="@string/app_name"
+        android:largeHeap="true"
+        android:requestLegacyExternalStorage="true"
+        android:roundIcon="@drawable/appstore"
+        android:screenOrientation="sensorPortrait"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme"
+        android:usesCleartextTraffic="true"
+        tools:ignore="UnusedAttribute">
+        <activity android:name=".RoverConfigs"
+            android:theme="@style/AppTheme.NoActionBar"/>
+        <activity
+            android:name=".Loglist"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Import"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Stakeselection"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <!--
+             The API key for Google Maps-based APIs is defined as a string resource.
+             (See the file "res/values/google_maps_api.xml").
+             Note that the API key is linked to the encryption key used to sign the APK.
+             You need a different API key for each encryption key, including the release key that is used to
+             sign the APK for publishing.
+             You can define the keys for the debug and release targets in src/debug/ and src/release/.
+        -->
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="@string/google_maps_key" />
+
+        <activity
+            android:name=".StakeMap"
+            android:screenOrientation="sensorPortrait"
+            android:label="@string/title_activity_stake_map" />
+        <activity
+            android:name="com.journeyapps.barcodescanner.CaptureActivity"
+            android:clearTaskOnLaunch="true"
+            android:screenOrientation="sensorLandscape"
+            android:stateNotNeeded="true"
+            android:theme="@style/zxing_CaptureTheme"
+            android:windowSoftInputMode="stateAlwaysHidden" />
+        <activity
+            android:name=".Export"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".AutoMap"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="sensorPortrait"
+            android:label="@string/title_activity_auto_map" />
+        <activity
+            android:name=".tasklist"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".ProjectList"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".TopoMap"
+            android:theme="@style/AppTheme.NoActionBar"
+            android:screenOrientation="sensorPortrait"
+            android:label="@string/title_activity_topo_map" />
+
+        <meta-data
+            android:name="com.google.android.gms.version"
+            android:value="@integer/google_play_services_version" />
+
+        <activity
+            android:name=".Generic.MapsActivity"
+            android:label="@string/title_activity_maps" />
+        <activity
+            android:name=".CRS_sattelite"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".HomeActivity" />
+        <activity android:name=".Generic.taskGeneric" />
+        <activity android:name=".Generic.ShowAllActivity" /> <!-- <activity android:name=".Data."></activity> -->
+        <uses-library
+            android:name="org.apache.http.legacy"
+            android:required="false" />
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths" />
+        </provider>
+
+        <activity
+            android:name=".newproject"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".Data.SplashActivity"
+            android:theme="@style/AppTheme.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <service
+            android:name=".utility.BluetoothLeService"
+            android:enabled="true" />
+        <service
+            android:name=".utility.BLEService"
+            android:exported="false" />
+
+        <activity
+            android:name=".utility.DeviceControlActivity"
+            android:label="@string/title_activity_device_control"
+            android:screenOrientation="sensorPortrait"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".utility.DeviceScanActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".DeviceScanActivity2"
+            android:theme="@style/FullscreenActionBarStyle" />
+        <activity android:name=".TopoSurveyListActivity"
+            android:theme="@style/AppTheme.NoActionBar" />
+
+        <activity android:name=".RoverConfigsNewActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".IPActivity"
+            android:theme="@style/AppTheme.NoActionBar"/>
+
+        <activity android:name=".MeterActivity"/>
+
+        <activity android:name=".Connect"/>
+        <activity android:name=".StakeMapCustom"/>
+
+        <activity android:name=".CRSList"/>
+
+        <activity android:name=".SkyViewActivity"/>
+
+        <activity android:name=".barchart.BarChartActivity" />
+
+    </application>
+
+</manifest>

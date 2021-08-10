@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/matchParent"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_positive_round">
+
+
+    <pl.droidsonroids.gif.GifImageView
+        android:id="@+id/gifload"
+        android:layout_gravity="center"
+        android:layout_width="@dimen/_150sdp"
+        android:layout_height="@dimen/_150sdp" />
+
+    <TextView
+        android:id="@+id/t1"
+        style="@style/matchWarp"
+        android:gravity="center"
+        android:text="@string/yes_new"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/twenty_six"
+        android:textStyle="bold" />
+
+    <TextView
+        style="@style/matchWarp"
+        android:id="@+id/t2"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:text="@string/device_configured_successfully"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size_twenty_two"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/btnDialog"
+        style="@style/matchWarp"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:background="@drawable/rounbutton"
+        android:text="@string/continue1"
+        android:textColor="@color/white"
+        android:textSize="@dimen/text_size_eighteen"
+        android:padding="@dimen/five_dp" />
+
+</LinearLayout>

@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/matchParent"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_positive_round"
+    android:gravity="center">
+
+
+
+
+    <TextView
+        android:id="@+id/t1"
+        style="@style/matchWarp"
+        android:gravity="center"
+        android:text="@string/are_you_want_to_setup_rover_config"
+        android:layout_marginTop="@dimen/_20sdp"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/twenty_six"
+        android:textStyle="bold" />
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:layout_marginTop="@dimen/_20sdp">
+
+        <Button
+            android:id="@+id/yes"
+            style="@style/wrapContent"
+            android:background="@drawable/rounbutton"
+            android:text="@string/continue1"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_fifteen"
+            android:padding="@dimen/five_dp"
+            android:minWidth="150dp"/>
+
+        <Button
+            android:id="@+id/cancel"
+            style="@style/wrapContent"
+            android:background="@drawable/rounbutton"
+            android:text="@string/cancel"
+            android:textColor="@color/white"
+            android:textSize="@dimen/text_size_eighteen"
+            android:padding="@dimen/five_dp"
+            android:minWidth="150dp"
+            android:layout_marginStart="@dimen/_10sdp"/>
+
+    </LinearLayout>
+
+
+</LinearLayout>

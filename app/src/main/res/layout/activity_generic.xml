@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorPrimaryDark"
+    android:orientation="vertical"
+    tools:context=".Generic.GenericActivity">
+
+    <LinearLayout
+        style="@style/matchWarp"
+        android:id="@+id/lay1"
+        android:orientation="vertical">
+
+        <Button
+            style="@style/matchWarp"
+            android:text="@string/submit"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:onClick="SubmitButton"
+            android:background="@drawable/bginputtask"
+            android:layout_alignParentBottom="true" />
+
+        <Button
+            style="@style/matchWarp"
+            android:text="@string/show_data"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:onClick="showdata"
+            android:background="@drawable/bginputtask" />
+
+    </LinearLayout>
+
+
+    <ScrollView
+        android:id="@+id/s1"
+        android:layout_below="@+id/lay1"
+        android:layout_width="match_parent"
+        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="@dimen/two_hundred">
+
+        <LinearLayout
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:id="@+id/parent_linear_layout"
+            android:orientation="vertical"
+            style="@style/matchParent">
+
+        </LinearLayout>
+    </ScrollView>
+
+    <LinearLayout
+        android:id="@+id/searchLayout5"
+        android:layout_below="@+id/s1"
+       style="@style/matchWarp"
+        android:layout_marginTop="@dimen/thirty_dp"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:orientation="vertical"
+           style="@style/wrapContent">
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/image"
+                style="@style/wrapContent"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                app:backgroundTint="@android:color/white"
+                app:maxImageSize="@dimen/forty_dp"
+                android:onClick="imgbtn"
+                android:src="@drawable/ic_camera_black_24dp"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/audio"
+                style="@style/wrapContent"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                app:backgroundTint="@android:color/white"
+                app:maxImageSize="@dimen/forty_dp"
+                android:src="@drawable/ic_mic_black_24dp"/>
+
+            <com.google.android.material.floatingactionbutton.FloatingActionButton
+                android:id="@+id/newdata"
+                style="@style/wrapContent"
+                android:layout_gravity="bottom|end"
+                android:layout_margin="@dimen/fab_margin"
+                app:backgroundTint="@android:color/white"
+                app:maxImageSize="@dimen/forty_dp"
+                android:src="@drawable/ic_add_circle_outline_black_24dp">
+
+            </com.google.android.material.floatingactionbutton.FloatingActionButton>
+
+        </LinearLayout>
+
+
+        <ScrollView
+            style="@style/matchWarp">
+
+            <LinearLayout
+                android:id="@+id/imgLayout"
+                style="@style/matchWarp"
+                android:layout_marginTop="@dimen/forty_six_dp"
+                android:orientation="vertical">
+
+            </LinearLayout>
+
+        </ScrollView>
+
+
+
+
+    </LinearLayout>
+
+
+
+</RelativeLayout>

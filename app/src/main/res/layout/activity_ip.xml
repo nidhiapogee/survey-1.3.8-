@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="@color/colorPrimaryDark">
+
+    <RelativeLayout
+        android:layout_margin="10dp"
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_height="match_parent">
+
+        <androidx.cardview.widget.CardView
+            android:id="@+id/cvDeviceRegister"
+            android:layout_width="match_parent"
+            android:layout_height="330dp"
+            android:layout_margin="10dp"
+            app:cardCornerRadius="30dp"
+            app:cardElevation="20dp"
+            app:contentPadding="10dp">
+
+            <LinearLayout
+                android:orientation="vertical"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+
+
+                <EditText
+                    style="@style/Base.CardView"
+                    android:id="@+id/e1"
+                    android:background="@drawable/editbox"
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:layout_centerInParent="true"
+                    android:maxLength="15"
+                    android:gravity="center"
+                    android:hint="Enter first time IP"
+                    android:textSize="15dp" />
+
+
+                <EditText
+                    android:id="@+id/e2"
+                    style="@style/Base.CardView"
+                    android:layout_margin="10dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="45dp"
+                    android:background="@drawable/editbox"
+                    android:layout_centerInParent="true"
+                    android:maxLength="8"
+                    android:gravity="center"
+                    android:hint="Enter first time PORT"
+                    android:textSize="15dp" />
+
+                <Button
+                    android:text="Save Or Change Ip/Port"
+                    android:layout_width="match_parent"
+                    android:id="@+id/b1"
+                    android:layout_margin="10dp"
+                    android:background="@color/colorPrimaryDark"
+                    android:layout_height="45dp"/>
+
+            </LinearLayout>
+
+
+
+
+
+
+
+
+
+        </androidx.cardview.widget.CardView>
+
+    </RelativeLayout>
+
+</RelativeLayout>

@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+   style="@style/matchParent"
+    android:orientation="vertical"
+    tools:context=".Export">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool"
+        style="@style/matchWarp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" />
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp">
+
+        <TextView
+            android:text="@string/file_name"
+            android:layout_marginStart="@dimen/_10sdp"
+            style="@style/wrapContent"/>
+
+
+        <EditText
+            style="@style/matchParent"
+            android:id="@+id/fname"
+            android:hint="@string/enter_file_name"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/_20sdp"
+            android:background="@drawable/editbox" />
+
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp">
+
+        <TextView
+            android:text="@string/dir"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:layout_weight="0.5"
+            android:gravity="center"
+            style="@style/wrapContent"/>
+
+
+        <TextView
+            android:text="@string/directory"
+            android:id="@+id/dir"
+            android:layout_weight="2"
+            android:gravity="center"
+            android:layout_marginStart="@dimen/_20sdp"
+           style="@style/wrapMatch"/>
+
+        <ImageButton
+            style="@style/wrapMatch"
+            android:src="@drawable/ic_folder_open_black_24dp"
+            android:layout_weight="0.5"
+            android:onClick="folderopen"
+            android:background="@color/transparent" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_margin="@dimen/_20sdp"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp">
+
+        <TextView
+            android:text="@string/data_type"
+            android:layout_marginStart="@dimen/_10sdp"
+            android:gravity="center"
+           style="@style/wrapContent"/>
+
+
+       <Spinner
+           android:id="@+id/spndatatype"
+           android:layout_marginStart="@dimen/_20sdp"
+           style="@style/matchParent"/>
+
+    </LinearLayout>
+
+
+    <Button
+        style="@style/matchWarp"
+        android:onClick="export"
+        android:textColor="@color/white"
+        android:background="@drawable/rounbutton"
+        android:text="@string/export_cap"/>
+
+    <Button
+        style="@style/matchWarp"
+        android:onClick="sendViaTelegram"
+        android:textColor="@color/white"
+        android:background="@drawable/rounbutton"
+        android:text="@string/send_via_telegram"
+        android:layout_marginTop="@dimen/ten_dp"/>
+
+</LinearLayout>

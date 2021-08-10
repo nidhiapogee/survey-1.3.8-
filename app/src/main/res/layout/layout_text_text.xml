@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/matchWarp"
+    android:layout_margin="@dimen/_10sdp">
+
+    <TextView
+        android:id="@+id/txtinput"
+        style="@style/matchWarp"
+        android:textSize="@dimen/text_size_eighteen"
+        android:textColor="@color/textColorPrimary"
+        android:layout_weight="0.5"
+        android:layout_margin="@dimen/_10sdp"
+        android:textStyle="bold"
+        android:text="TextView" />
+
+    <TextView
+        android:id="@+id/txtinput2"
+        style="@style/matchWarp"
+        android:textSize="@dimen/text_size_fifteen"
+        android:layout_margin="@dimen/_10sdp"
+        android:textStyle="bold"
+        android:textColor="@color/textColorPrimary"
+        android:text="Textview2"
+        android:layout_weight="0.5" />
+
+</LinearLayout>

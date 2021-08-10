@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_positive_round"
+    style="@style/matchParent">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        card_view:cardBackgroundColor="@color/color_bluedark"
+        card_view:cardCornerRadius="@dimen/ten_dp"
+        card_view:cardElevation="@dimen/one_dp"
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:id="@+id/lay"
+            style="@style/matchWarp"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cmethodtext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:gravity="center"
+                android:text="@string/device_info"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twenty_sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+    <ImageView
+        android:id="@+id/imgv"
+        android:layout_gravity="center"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/deviceapogee"
+        app:tint="@color/white"
+        android:layout_width="@dimen/two_hundred"
+        android:layout_height="@dimen/two_hundred">
+
+    </ImageView>
+
+    <RadioGroup
+        style="@style/matchWarp"
+        android:id="@+id/rd1"
+        android:orientation="horizontal"
+        android:gravity="center">
+
+
+        <RadioButton
+            style="@style/wrapMatch"
+            android:id="@+id/crtsn"
+            android:text="@string/cartesian"
+            android:textSize="@dimen/twenty_sp"
+            android:layout_margin="@dimen/ten_dp" />
+
+        <RadioButton
+            style="@style/wrapMatch"
+            android:text="@string/geographical"
+            android:textSize="@dimen/twenty_sp"
+            android:layout_margin="@dimen/ten_dp" />
+
+    </RadioGroup>
+
+    <LinearLayout
+        style="@style/matchWarp">
+
+        <TextView
+            style="@style/matchWarp"
+            android:textSize="@dimen/text_size_eighteen"
+            android:textColor="@color/textColorPrimary"
+            android:layout_weight="0.5"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:text="@string/base_name" />
+
+        <TextView
+            android:id="@+id/BName"
+            style="@style/matchWarp"
+            android:textSize="@dimen/text_size_fifteen"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@color/textColorPrimary"
+            android:text="@string/apogeedk"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/matchWarp">
+
+        <TextView
+            android:id="@+id/eastname"
+            style="@style/matchWarp"
+            android:textSize="@dimen/text_size_eighteen"
+            android:textColor="@color/textColorPrimary"
+            android:layout_weight="0.5"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:text="@string/base_latitude" />
+
+        <TextView
+            android:id="@+id/BEasting"
+            style="@style/matchWarp"
+            android:textSize="@dimen/text_size_fifteen"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@color/textColorPrimary"
+            android:text="@string/default_new"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/matchWarp">
+
+        <TextView
+            android:id="@+id/northname"
+            style="@style/matchWarp"
+            android:textSize="@dimen/text_size_eighteen"
+            android:textColor="@color/textColorPrimary"
+            android:layout_weight="0.5"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:text="@string/base_longitude" />
+
+        <TextView
+            android:id="@+id/BNorthing"
+            style="@style/matchWarp"
+            android:textSize="@dimen/text_size_fifteen"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@color/textColorPrimary"
+            android:text="@string/default_new"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/matchWarp">
+
+        <TextView
+            android:id="@+id/heightname"
+            style="@style/matchWarp"
+            android:textSize="@dimen/text_size_eighteen"
+            android:textColor="@color/textColorPrimary"
+            android:layout_weight="0.5"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:text="@string/base_height" />
+
+        <TextView
+            android:id="@+id/Bheighttt"
+            style="@style/matchWarp"
+            android:textSize="@dimen/text_size_fifteen"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@color/textColorPrimary"
+            android:text="@string/default_new"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        style="@style/matchWarp">
+
+        <TextView
+            style="@style/matchWarp"
+            android:textSize="@dimen/text_size_eighteen"
+            android:textColor="@color/textColorPrimary"
+            android:layout_weight="0.5"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:text="@string/base_distance" />
+
+        <TextView
+            android:id="@+id/BDist"
+            style="@style/matchWarp"
+            android:textSize="@dimen/text_size_fifteen"
+            android:layout_margin="@dimen/_10sdp"
+            android:textStyle="bold"
+            android:textColor="@color/textColorPrimary"
+            android:text="@string/default_new"
+            android:layout_weight="0.5" />
+
+    </LinearLayout>
+
+    <Button
+        android:layout_marginTop="@dimen/fifty_dp"
+        android:id="@+id/llhbtn"
+        android:text="@string/done"
+        android:textColor="@color/white"
+        android:layout_width="match_parent"
+        android:background="@drawable/rounbutton"
+        android:layout_height="wrap_content"/>
+
+</LinearLayout>

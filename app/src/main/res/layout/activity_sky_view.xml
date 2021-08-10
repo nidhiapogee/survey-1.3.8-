@@ -1,0 +1,308 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/e1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Please Enter Azimuth degree"
+        android:inputType="number"
+        android:maxLength="360"
+        android:visibility="gone"/>
+    <EditText
+        android:id="@+id/e2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Please Enter Elevation degree"
+        android:inputType="number"
+        android:maxLength="360"
+        android:visibility="gone"/>
+    <Spinner
+        android:id="@+id/s1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:entries="@array/satelite"
+        android:visibility="gone"/>
+    <EditText
+        android:id="@+id/e3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Please Enter Satelite Id"
+        android:inputType="number"
+        android:maxLength="360"
+        android:visibility="gone"/>
+    <Button
+        android:id="@+id/b1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:text="Plot"
+        android:visibility="gone"/>
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="300dp"
+        android:layout_height="300dp"
+        app:srcCompat="@drawable/blankscreen"
+        android:layout_gravity="center"
+        android:scaleType="fitXY"/>
+
+    <ScrollView
+        style="@style/matchWarp" >
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_weight="1.5"
+            android:layout_height="0dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="end">
+
+                <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                    android:id="@+id/graph"
+                    style="@style/wrapContent"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:floating_background_color="@color/color_bluedark"
+                    app:floating_title="BarView"
+                    app:floating_title_color="@android:color/white"
+                    app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                    android:id="@+id/listing"
+                    style="@style/wrapContent"
+                    android:layout_gravity="end"
+                    android:layout_marginEnd="@dimen/_10sdp"
+                    app:floating_background_color="@color/color_bluedark"
+                    app:floating_title="Listing"
+                    app:floating_title_color="@android:color/white"
+                    app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_weight="1.5"
+                android:layout_height="0dp">
+
+
+                <LinearLayout
+                    android:orientation="vertical"
+                    android:layout_width="@dimen/_150sdp"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_weight="1"
+                    android:layout_height="match_parent">
+
+
+                    <LinearLayout
+                        android:orientation="horizontal"
+                        style="@style/matchWarp"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:background="@color/colorgreen"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"/>
+
+
+                        <TextView
+                            android:id="@+id/stgps"
+                            style="@style/wrapMatch"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_size_twelve"
+                            android:text="@string/gps"
+                            android:textColor="@color/textColorBlack"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/matchWarp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:background="@color/coloryellow"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"/>
+
+
+                        <TextView
+                            style="@style/wrapMatch"
+                            android:id="@+id/stglonass"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_size_twelve"
+                            android:text="@string/glonass"
+                            android:textColor="@color/textColorBlack"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/matchWarp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:background="@color/color_blued"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"/>
+
+
+                        <TextView
+                            style="@style/wrapMatch"
+                            android:id="@+id/stsbas"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_size_twelve"
+                            android:text="@string/sbas"
+                            android:textColor="@color/textColorBlack"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/matchWarp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:background="@color/colorlightblue"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"/>
+
+
+                        <TextView
+                            style="@style/wrapMatch"
+                            android:id="@+id/stgalieleo"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_size_twelve"
+                            android:text="@string/galileo"
+                            android:textColor="@color/textColorBlack"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                    <LinearLayout
+                        style="@style/matchWarp"
+                        android:orientation="horizontal"
+                        android:layout_margin="@dimen/_10sdp">
+
+                        <ImageView
+                            android:background="@color/coloret"
+                            android:layout_width="@dimen/_20sdp"
+                            android:layout_height="@dimen/_20sdp"/>
+
+
+                        <TextView
+                            style="@style/wrapMatch"
+                            android:id="@+id/stbeidou"
+                            android:layout_marginStart="@dimen/_10sdp"
+                            android:gravity="center"
+                            android:textSize="@dimen/text_size_twelve"
+                            android:text="@string/beidou"
+                            android:textColor="@color/textColorBlack"
+                            android:textStyle="bold" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+
+
+
+                <LinearLayout
+                    android:layout_width="@dimen/_170sdp"
+                    android:orientation="vertical"
+                    android:layout_weight="1"
+                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_height="wrap_content">
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/sats"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/postn"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/hzpcn"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/vtpcn"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/hdop"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                    <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                        android:id="@+id/vdop"
+                        style="@style/wrapContent"
+                        android:layout_gravity="start|bottom"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        app:floating_background_color="@color/color_bluedark"
+                        app:floating_title="default"
+                        app:floating_title_color="@android:color/white"
+                        app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
+
+                </LinearLayout>
+
+
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+
+
+
+
+
+    </ScrollView>
+</LinearLayout>

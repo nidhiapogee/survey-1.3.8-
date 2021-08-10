@@ -1,0 +1,314 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/matchMatch"
+    android:fillViewport="true">
+
+    <RelativeLayout
+        style="@style/matchMatch">
+
+
+        <LinearLayout
+            style="@style/matchMatch"
+            android:orientation="vertical"
+            android:padding="@dimen/_10sdp">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="18sp"
+                android:textColor="@color/textColorPrimary"
+                android:layout_margin="10dp"
+                android:textStyle="bold"
+                android:text="@string/meter_survey" />
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/matchWrap"
+                android:hint="@string/pole_number">
+
+                <!--this is the actual edit text which takes the input-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/pole_number"
+                    style="@style/matchWrap" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/matchWrap"
+                android:hint="@string/ivrs_number">
+
+                <!--this is the actual edit text which takes the input-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/IVRS_number"
+                    style="@style/matchWrap" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+
+            <LinearLayout
+                style="@style/matchWrap"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/_10sdp">
+
+                <TextView
+                    android:id="@+id/txtinput"
+                    style="@style/wrapWrap"
+                    android:textSize="18sp"
+                    android:textColor="@color/textColorPrimary"
+                    android:textStyle="bold"
+                    android:text="@string/meter"
+                    android:layout_gravity="center_vertical"/>
+
+                <RadioGroup
+                    style="@style/wrapWrap"
+                    android:id="@+id/rg_meter"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/_10sdp">
+
+                    <RadioButton
+                        style="@style/wrapWrap"
+                        android:text="@string/yes"
+                        android:id="@+id/rb_yes"
+                        android:layout_gravity="center_horizontal"
+                        android:checked="true"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        style="@style/wrapWrap"
+                        android:text="@string/no"
+                        android:id="@+id/rb_no"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="18sp"
+                        />
+                </RadioGroup>
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/matchWrap"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/_10sdp">
+
+                <TextView
+                    style="@style/wrapWrap"
+                    android:textSize="18sp"
+                    android:textColor="@color/textColorPrimary"
+                    android:textStyle="bold"
+                    android:text="@string/meter_phase"
+                    android:layout_gravity="center_vertical"/>
+
+                <RadioGroup
+                    style="@style/wrapWrap"
+                    android:id="@+id/rg_meter_phase"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/_10sdp">
+
+                    <RadioButton
+                        style="@style/wrapWrap"
+                        android:text="@string/three_phase"
+                        android:id="@+id/rb_3ph"
+                        android:layout_gravity="center_horizontal"
+                        android:checked="true"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        style="@style/wrapWrap"
+                        android:text="@string/one_phase"
+                        android:id="@+id/rb_1ph"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="18sp"
+                        />
+                </RadioGroup>
+
+
+
+
+            </LinearLayout>
+
+            <LinearLayout
+                style="@style/matchWrap"
+                android:orientation="horizontal"
+                android:layout_margin="@dimen/_10sdp">
+
+                <TextView
+                    style="@style/wrapWrap"
+                    android:textSize="18sp"
+                    android:textColor="@color/textColorPrimary"
+                    android:textStyle="bold"
+                    android:text="@string/functional"
+                    android:layout_gravity="center_vertical"/>
+
+                <RadioGroup
+                    style="@style/wrapWrap"
+                    android:id="@+id/rg_functional"
+                    android:orientation="horizontal"
+                    android:layout_marginStart="@dimen/_10sdp">
+
+                    <RadioButton
+                        style="@style/wrapWrap"
+                        android:text="@string/yes"
+                        android:id="@+id/rbyes"
+                        android:layout_gravity="center_horizontal"
+                        android:checked="true"
+                        android:textSize="18sp" />
+
+                    <RadioButton
+                        style="@style/wrapWrap"
+                        android:text="@string/no"
+                        android:id="@+id/rbno"
+                        android:layout_gravity="center_horizontal"
+                        android:textSize="18sp"
+                        />
+                </RadioGroup>
+
+
+
+
+            </LinearLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/matchWrap"
+                android:hint="@string/meter_reading">
+
+                <!--this is the actual edit text which takes the input-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/meter_reading"
+                    style="@style/matchWrap"
+                    android:inputType="number"/>
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/matchWrap"
+                android:hint="@string/meter_number">
+
+                <!--this is the actual edit text which takes the input-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/meter_number"
+                    style="@style/matchWrap" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <com.google.android.material.textfield.TextInputLayout
+                style="@style/matchWrap"
+                android:hint="@string/meter_address">
+
+                <!--this is the actual edit text which takes the input-->
+                <com.google.android.material.textfield.TextInputEditText
+                    android:id="@+id/meter_address"
+                    style="@style/matchWrap" />
+
+            </com.google.android.material.textfield.TextInputLayout>
+
+            <LinearLayout
+                style="@style/matchWrap"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:orientation="horizontal"
+                android:gravity="center"
+                android:layout_weight="4">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <Button
+                        android:id="@+id/neww"
+                        style="@style/wrapWrap"
+                        android:text="@string/neww"
+                        android:background="@color/colorPrimaryDark"
+                        android:textAllCaps="false"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"/>
+                </LinearLayout>
+
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <Button
+                        style="@style/wrapWrap"
+                        android:text="@string/sync"
+                        android:background="@color/colorPrimaryDark"
+                        android:textAllCaps="false"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+                    <Button
+                        android:id="@+id/syncSave"
+                        style="@style/wrapWrap"
+                        android:text="@string/save_sync"
+                        android:background="@color/colorPrimaryDark"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textAllCaps="false"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"/>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1">
+
+                    <Button
+                        android:id="@+id/ViewRoute"
+                        style="@style/wrapWrap"
+                        android:text="@string/view_route"
+                        android:background="@color/colorPrimaryDark"
+                        android:layout_marginStart="@dimen/_10sdp"
+                        android:textAllCaps="false"
+                        android:paddingStart="@dimen/_10sdp"
+                        android:paddingEnd="@dimen/_10sdp"/>
+                </LinearLayout>
+
+
+
+            </LinearLayout>
+
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recycler_view"
+                style="@style/matchWrap"
+                android:layout_marginTop="@dimen/_10sdp"/>
+
+
+        </LinearLayout>
+
+        <com.google.android.material.floatingactionbutton.FloatingActionButton
+            android:id="@+id/fab_camera"
+            style="@style/wrapWrap"
+            android:src="@android:drawable/ic_menu_camera"
+            app:elevation="6dp"
+            app:pressedTranslationZ="12dp"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/_20sdp"
+            android:layout_marginEnd="@dimen/_20sdp"/>
+
+
+        <ProgressBar
+            android:id="@+id/progress"
+            android:layout_width="55dp"
+            android:layout_height="55dp"
+            android:layout_centerInParent="true"
+            android:visibility="gone"/>
+
+
+
+    </RelativeLayout>
+
+
+</androidx.core.widget.NestedScrollView>
+

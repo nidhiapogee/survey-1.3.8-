@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+ <resources>
+    <color name="colorPrimary">#615A57</color>
+     <color name="colorPrimary1">#9A9B1E16</color>
+    <color name="colorPrimaryDark">#64A19B</color>
+     <color name="colorDarkDim">#50802E02</color>
+     <color name="colorAccent">#D81B60</color>
+     <color name="colorWhite">#FFFFFF</color>
+     <color name="coloret">#FF9691</color>
+     <color name="textColorPrimary">#000000</color>
+     <color name="white">#ffffff</color>
+     <color name="btn_logut_bg">#ff6861</color>
+     <color name="colorblue">#C13F51B5</color>
+     <color name="coloryellow">#D7DBC626</color>
+    <color name="color_bluedark">#64A19B</color>
+    <color name="color_blued">#6672B6</color>
+    <color name="colorlightblue">#9869EC</color>
+    <color name="chatreceive">#326E68</color>
+
+    <color name="tab_disable">#979797</color>
+    <color name="tab_enable">#FFFFFF</color>
+    <color name="tab_checked">#F3CD70</color>
+    <color name="tab_unchecked">#FFFFFF</color>
+    <color name="dialog_color">#02423C33</color>
+    <color name="textColorBlack">#000000</color>
+    <color name="colorgreen">#8DD690</color>
+    <color name="colorred">#B31D12</color>
+    <color name="colorlightgrey">#AE171917</color>
+    <color name="whatsapp_green">#00897b</color>
+    <color name="bubble_background_rcv">#f3ffd2</color>
+    <color name="bubble_background_send">#d2ffdb</color>
+
+    <color name="light_gray">#B5B5B5</color>
+    <color name="light_gray_new">#F4F4F4</color>
+    <color name="cancel_gray">#AFAFAF</color>
+    <color name="bg_gray">#81DDD5D5</color>
+
+
+</resources>

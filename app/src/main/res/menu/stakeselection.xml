@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/p"
+        android:icon="@drawable/ic_baseline_open_in_new_24"
+        android:title="Open"></item>
+    <item
+        android:id="@+id/p1"
+        android:icon="@drawable/ic_add_circle_outline_black_24dp"
+        android:title="Add"></item>
+
+    <item
+        android:id="@+id/p2"
+        android:icon="@drawable/ic_baseline_edit_24"
+        android:title="Edit"></item>
+
+    <item
+        android:id="@+id/p3"
+        android:icon="@drawable/ic_delete_black_24dp"
+        android:title="Delete"></item>
+</menu>

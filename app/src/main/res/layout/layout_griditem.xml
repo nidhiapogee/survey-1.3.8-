@@ -1,0 +1,38 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    style="@style/wrapContent"
+    android:orientation="vertical"
+    android:padding="@dimen/five_dp">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/fab"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        android:layout_centerInParent="true"
+        android:layout_marginEnd="@dimen/ten_dp"
+        android:layout_gravity="center"
+        android:layout_marginBottom="@dimen/ten_dp"
+        android:background="@android:color/white"
+        app:cardCornerRadius="@dimen/forty_nine"
+        app:cardElevation="@dimen/fab_margin">
+
+        <ImageView
+            android:id="@+id/grid_image"
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center"
+            android:src="@mipmap/ic_launcher" />
+
+    </androidx.cardview.widget.CardView>
+
+    <TextView
+        android:id="@+id/grid_text"
+        android:layout_below="@+id/fab"
+        style="@style/wrapContent"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="@dimen/fifteen_dp"
+        android:text="@string/project"
+        android:textColor="@color/colorPrimary"
+        android:textSize="@dimen/text_size_ten"/>
+
+</RelativeLayout>

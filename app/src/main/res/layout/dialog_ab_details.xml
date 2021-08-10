@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cv"
+    style="@style/matchWarp"
+    android:layout_margin="@dimen/_5sdp"
+    card_view:cardCornerRadius="@dimen/five_dp"
+    card_view:cardElevation="@dimen/four_dp"
+    card_view:cardMaxElevation="@dimen/six_dp">
+
+    <LinearLayout
+        style="@style/matchWarp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal">
+
+        <LinearLayout
+            style="@style/wrapContent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/ten_dp">
+
+            <TextView
+                style="@style/wrapContent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/five_dp"
+                android:text="@string/latitude_n"
+                android:textSize="@dimen/text_size_seventeen" />
+
+
+            <TextView
+                android:id="@+id/tvLat"
+                style="@style/wrapContent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/five_dp"
+                android:textSize="@dimen/text_size_seventeen" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/wrapContent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/ten_dp">
+
+            <TextView
+                style="@style/wrapContent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/five_dp"
+                android:text="@string/longtitude_n"
+                android:textSize="@dimen/text_size_seventeen" />
+
+
+            <TextView
+                android:id="@+id/tvLng"
+                style="@style/wrapContent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/five_dp"
+                android:textSize="@dimen/text_size_seventeen" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            style="@style/wrapContent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/ten_dp">
+
+            <TextView
+                style="@style/wrapContent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/five_dp"
+                android:text="@string/altitude_n"
+                android:textSize="@dimen/text_size_seventeen" />
+
+
+            <TextView
+                android:id="@+id/tvAlt"
+                style="@style/wrapContent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/five_dp"
+                android:textSize="@dimen/text_size_seventeen" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/wrapContent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/ten_dp">
+
+            <TextView
+                style="@style/wrapContent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/five_dp"
+                android:text="@string/survey_accuracy_n"
+                android:textSize="@dimen/text_size_seventeen" />
+
+
+            <TextView
+                android:id="@+id/tvAccuracy"
+                style="@style/wrapContent"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/five_dp"
+                android:textSize="@dimen/text_size_seventeen" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            style="@style/wrapContent"
+            android:orientation="horizontal"
+            android:layout_marginTop="@dimen/ten_dp"
+            android:layout_marginBottom="@dimen/_10sdp">
+
+            <Button
+                android:id="@+id/cancel"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/rounbutton"
+                android:text="@string/cancel"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:padding="5dp" />
+
+
+            <Button
+                android:id="@+id/done"
+                android:layout_width="150dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/_20sdp"
+                android:background="@drawable/rounbutton"
+                android:text="@string/done"
+                android:textColor="@color/white"
+                android:textSize="18sp"
+                android:padding="5dp"
+                android:layout_marginStart="@dimen/_10sdp"/>
+        </LinearLayout>
+
+
+
+    </LinearLayout>
+
+</androidx.cardview.widget.CardView>
+

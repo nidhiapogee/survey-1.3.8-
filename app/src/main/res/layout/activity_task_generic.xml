@@ -1,0 +1,197 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+   style="@style/matchParent" >
+
+    <LinearLayout
+        xmlns:tools="http://schemas.android.com/tools"
+       style="@style/matchWarp"
+        android:orientation="vertical"
+        android:background="@color/light_gray_new"
+        tools:context=".Data.Main2Activity">
+
+
+
+        <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="@dimen/one_ninty_eight">
+
+            <TextView
+                android:id="@+id/titlepage"
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:textSize="@dimen/twenty_six"
+                android:textColor="@color/white"
+                android:text="@string/create_new_task"
+                android:textAlignment="center"
+                android:layout_marginBottom="@dimen/eighteen_dp"
+               style="@style/matchWarp" />
+
+            <View
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:layout_width="match_parent"
+                android:background="@color/colorPrimary"
+                android:layout_height="@dimen/one_dp" />
+
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_marginStart="@dimen/fab_margin"
+            android:layout_marginEnd="@dimen/fab_margin"
+            android:layout_marginTop="-60dp"
+           style="@style/matchWarp"
+            android:background="@drawable/bgitemdoes"
+            android:orientation="vertical"
+            android:paddingBottom="@dimen/twenty_two"
+            android:paddingTop="@dimen/twenty_two">
+
+            <LinearLayout
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:layout_marginStart="@dimen/fab_margin"
+                android:orientation="vertical"
+                style="@style/matchWarp">
+
+                <TextView
+                    android:id="@+id/addtitle"
+                    android:textSize="@dimen/text_size_eighteen"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/add_title"
+                    android:layout_marginBottom="@dimen/ten_dp"
+                    style="@style/matchWarp" />
+
+                <EditText
+                    android:id="@+id/titledoes"
+                    android:inputType="text"
+                    android:background="@drawable/bginputtask"
+                    android:paddingStart="@dimen/twelve_dp"
+                    android:paddingEnd="@dimen/twelve_dp"
+                    android:textColorHint="@color/light_gray"
+                    android:textColor="@color/colorPrimary"
+                    android:hint="@string/what_you_do"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty_five_dp" />
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:layout_marginStart="@dimen/fab_margin"
+                android:orientation="vertical"
+                style="@style/matchWarp">
+
+                <TextView
+                    android:id="@+id/Person"
+                    android:textSize="@dimen/text_size_eighteen"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/person"
+                    android:layout_marginBottom="@dimen/ten_dp"
+                    android:layout_marginTop="@dimen/ten_dp"
+                    style="@style/matchWarp" />
+
+                <EditText
+                    android:id="@+id/aboutyourself"
+                    android:inputType="text"
+                    android:background="@drawable/bginputtask"
+                    android:paddingStart="@dimen/twelve_dp"
+                    android:paddingEnd="@dimen/twelve_dp"
+                    android:textColorHint="@color/light_gray"
+                    android:textColor="@color/colorPrimary"
+                    android:hint="@string/who_are_you"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty_five_dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:layout_marginStart="@dimen/fab_margin"
+                android:orientation="vertical"
+                style="@style/matchWarp">
+
+                <TextView
+                    android:id="@+id/adddesc"
+                    android:textSize="@dimen/text_size_eighteen"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/description"
+                    android:layout_marginBottom="@dimen/ten_dp"
+                   style="@style/matchWarp" />
+
+                <EditText
+                    android:id="@+id/descdoes"
+                    android:inputType="text"
+                    android:background="@drawable/bginputtask"
+                    android:paddingStart="@dimen/fab_margin"
+                    android:paddingEnd="@dimen/fab_margin"
+                    android:textColorHint="@color/light_gray"
+                    android:maxLength="250"
+                    android:textColor="@color/colorPrimary"
+                    android:hint="@string/how_to"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty_five_dp" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="@dimen/twenty_dp"
+                android:layout_marginEnd="@dimen/fab_margin"
+                android:layout_marginStart="@dimen/fab_margin"
+                android:orientation="vertical"
+                style="@style/matchWarp">
+
+                <TextView
+                    android:id="@+id/adddate"
+                    android:textSize="@dimen/text_size_eighteen"
+                    android:textColor="@color/colorPrimary"
+                    android:text="@string/timeline"
+                    android:layout_marginBottom="@dimen/ten_dp"
+                    style="@style/matchWarp" />
+
+                <EditText
+                    android:id="@+id/datedoes"
+                    android:inputType="text"
+                    android:background="@drawable/bginputtask"
+                    android:paddingStart="@dimen/fab_margin"
+                    android:paddingEnd="@dimen/fab_margin"
+                    android:textColorHint="@color/light_gray"
+                    android:textColor="@color/colorPrimary"
+                    android:hint="@string/when_will"
+                    android:layout_width="match_parent"
+                    android:layout_height="@dimen/fifty_five_dp" />
+
+            </LinearLayout>
+
+
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btnSaveTask"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:layout_marginTop="@dimen/twenty_dp"
+            android:text="@string/create_now"
+            android:textColor="@color/white"
+            android:textAllCaps="false"
+            android:background="@drawable/rounbutton"
+            android:textSize="@dimen/text_size_twenty_two"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_five_dp" />
+
+        <Button
+            android:id="@+id/btnCancel"
+            android:layout_marginRight="@dimen/fab_margin"
+            android:layout_marginLeft="@dimen/fab_margin"
+            android:layout_marginTop="@dimen/fourteen_dp"
+            android:text="@string/cancel"
+            android:textColor="@color/cancel_gray"
+            android:textAllCaps="false"
+            android:background="@drawable/bgbtncancel"
+            android:textSize="@dimen/text_size_twenty_two"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/fifty_five_dp" />
+
+    </LinearLayout>
+
+</ScrollView>

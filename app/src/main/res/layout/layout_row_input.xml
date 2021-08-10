@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  style="@style/matchWarp"
+    android:orientation="horizontal"
+    android:weightSum="1">
+
+    <TextView
+        android:id="@+id/txtinput"
+        style="@style/matchWarp"
+        android:textSize="@dimen/text_size_eighteen"
+        android:textColor="@color/textColorPrimary"
+        android:layout_margin="@dimen/ten_dp"
+        android:layout_weight="0.5"
+        android:textStyle="bold"
+        android:text="TextView" />
+
+    <EditText
+        android:id="@+id/edinput"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:windowSoftInputMode="stateVisible"
+        android:textSize="@dimen/text_size_fifteen"
+        android:padding="@dimen/_5sdp"
+        android:layout_margin="@dimen/ten_dp"
+        android:textStyle="bold"
+        android:background="@drawable/editbox"
+        android:hint="@string/input"
+        android:layout_weight="0.5" />
+</LinearLayout>

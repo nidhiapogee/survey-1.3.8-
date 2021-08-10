@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/matchParent"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    tools:context=".Loglist">
+
+    <androidx.appcompat.widget.Toolbar
+        android:id="@+id/tool"
+        style="@style/matchWarp"
+        android:background="?attr/colorPrimary"
+        android:minHeight="?attr/actionBarSize"
+        app:theme="@style/ThemeOverlay.AppCompat.Dark" >
+
+        <TextView
+            android:text="@string/nmea_output"
+            style="@style/wrapContent">
+
+        </TextView>
+
+        <RelativeLayout
+            style="@style/matchWarp"
+            android:gravity="end">
+            <ImageButton
+                android:onClick="clearlog"
+                android:layout_marginEnd="@dimen/_10sdp"
+                android:background="@drawable/ic_delete_black_24dp"
+                style="@style/wrapContent"/>
+
+        </RelativeLayout>
+
+    </androidx.appcompat.widget.Toolbar>
+
+    <co.intentservice.chatui.ChatView
+        android:id="@+id/chat_view"
+       style="@style/matchParent"
+        app:backgroundColor="@color/white"
+        app:bubbleBackgroundRcv="@color/chatreceive"
+        app:bubbleElevation="elevated"
+        app:bubbleBackgroundSend="@color/white"
+        app:inputHint="start_typing" />
+
+</LinearLayout>

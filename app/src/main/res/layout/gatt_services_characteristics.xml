@@ -1,0 +1,324 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/matchParent"
+    android:background="@color/bg_gray"
+    android:orientation="vertical">
+
+    <com.google.android.material.appbar.AppBarLayout
+       style="@style/matchWarp"
+        android:theme="@style/AppTheme.AppBarOverlay">
+
+        <androidx.appcompat.widget.Toolbar
+            android:id="@+id/toolbar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            android:background="?attr/colorPrimary"
+            app:popupTheme="@style/AppTheme.PopupOverlay" />
+
+        <LinearLayout
+            style="@style/matchParent"
+            android:orientation="horizontal"
+            android:weightSum="4">
+            <LinearLayout
+                android:id="@+id/backlay"
+              style="@style/wrapContent"
+                android:layout_marginStart="@dimen/ten_dp"
+                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_marginBottom="@dimen/_10sdp"
+                android:layout_weight=".5"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="@dimen/thirty_dp"
+                    android:layout_height="@dimen/thirty_dp"
+                    android:src="@drawable/ic_baseline_arrow_back_24"
+                    app:tint="@color/white" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/satlay"
+                style="@style/wrapContent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight="1.2"
+                android:orientation="vertical">
+                <ImageView
+                    android:layout_width="@dimen/thirty_dp"
+                    android:layout_height="@dimen/thirty_dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/satellite"
+                    app:tint="@color/white" />
+                <TextView
+                    android:id="@+id/sattxt"
+                    style="@style/wrapContent"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:text="@string/n_a"
+                    android:textColor="@color/white"
+                    android:textSize="@dimen/text_size_twelve"/>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/btrylay"
+               style="@style/wrapContent"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/btimg"
+                    android:layout_width="@dimen/thirty_dp"
+                    android:layout_height="@dimen/thirty_dp"
+                    android:layout_gravity="center"
+                    app:tint="@color/white"
+                    android:src="@drawable/batterynostats"
+                    />
+                <TextView
+                    android:id="@+id/bttxt"
+                    style="@style/wrapContent"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:text="@string/battery"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/blelay"
+                style="@style/wrapContent"
+                android:layout_marginStart="@dimen/ten_dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight=".5"
+                android:orientation="vertical">
+                <ImageView
+                    android:id="@+id/bleimg"
+                    android:layout_width="@dimen/thirty_dp"
+                    android:layout_height="@dimen/thirty_dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/ic_baseline_bluetooth_disabled_24" />
+                <TextView
+                    android:id="@+id/connection_state"
+                    style="@style/wrapContent"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:text="@string/menu_disconnect"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/homelay"
+                style="@style/wrapContent"
+                android:layout_marginStart="@dimen/ten_dp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="@dimen/thirty_dp"
+                    android:layout_height="@dimen/thirty_dp"
+                    android:layout_gravity="center"
+                    app:tint="@color/white"
+                    android:src="@drawable/ic_home_black_24dp" />
+
+                <TextView
+                  style="@style/wrapContent"
+                    android:textStyle="bold"
+                    android:layout_gravity="center"
+                    android:text="@string/home"
+                    android:textColor="@color/white" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </com.google.android.material.appbar.AppBarLayout>
+
+
+
+    <ScrollView
+        style="@style/matchWarp">
+
+        <RelativeLayout
+            style="@style/matchWarp">
+
+            <LinearLayout
+                android:id="@+id/msgLayout"
+                style="@style/matchWarp"
+                android:orientation="horizontal"/>
+
+            <LinearLayout
+                android:id="@+id/lay1"
+                style="@style/matchWarp"
+                android:layout_below="@+id/msgLayout"
+                android:layout_margin="@dimen/ten_dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    style="@style/wrapContent"
+                    android:text="@string/device_name"
+                    android:textSize="@dimen/text_size_eighteen" />
+
+                <Space
+                    android:layout_width="@dimen/five_dp"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:id="@+id/device_address"
+                  style="@style/matchWarp"
+                    android:textSize="@dimen/text_size_eighteen" />
+            </LinearLayout>
+
+
+
+            <LinearLayout
+                android:id="@+id/laye55"
+                style="@style/matchWarp"
+                android:layout_below="@+id/lay1"
+                android:visibility="gone"
+                android:layout_margin="@dimen/ten_dp"
+                android:orientation="horizontal">
+
+                <TextView
+                   style="@style/wrapContent"
+                    android:text="@string/enter_time"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_size_eighteen"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/ed_inputnum"
+                    style="@style/matchWarp"
+                    android:layout_alignParentTop="true"
+                    android:layout_toEndOf="@+id/textView2"
+                    android:layout_toRightOf="@+id/textView2"
+                    android:gravity="end"
+                    android:hint="@string/enter_time_new"
+                    android:inputType="number"
+                    android:textColor="@color/textColorPrimary" />
+
+
+            </LinearLayout>
+
+
+            <LinearLayout
+                android:id="@+id/laye5"
+                android:layout_below="@+id/laye55"
+                style="@style/matchWarp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    android:id="@+id/txtdrop"
+                    style="@style/matchWarp"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_size_eighteen"
+                    android:layout_margin="@dimen/ten_dp"
+                    android:layout_weight="0.5"
+                    android:textStyle="bold"
+                    android:text="@string/config_mode" />
+
+                <Spinner
+                    android:id="@+id/config"
+                    style="@style/matchWarp"
+                    android:layout_margin="@dimen/ten_dp"
+                    android:drawSelectorOnTop="true"
+                    android:entries="@array/array_name"
+                    android:layout_weight="0.5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/sublayout"
+                android:layout_below="@+id/laye5"
+                style="@style/matchWarp"
+                android:orientation="horizontal"
+                android:weightSum="1">
+
+                <TextView
+                    style="@style/matchWarp"
+                    android:textColor="@color/textColorPrimary"
+                    android:textSize="@dimen/text_size_eighteen"
+                    android:layout_margin="@dimen/ten_dp"
+                    android:layout_weight="0.5"
+                    android:textStyle="bold"
+                    android:text="@string/communication" />
+
+                <Spinner
+                    android:id="@+id/suboprtnspnr"
+                    style="@style/matchWarp"
+                    android:layout_margin="@dimen/ten_dp"
+                    android:drawSelectorOnTop="true"
+                    android:entries="@array/array_name"
+                    android:layout_weight="0.5"  />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recylcerview"
+                style="@style/matchWarp"
+                android:layout_below="@+id/sublayout"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                tools:layout_editor_absoluteY="1dp" />
+
+            <LinearLayout
+                android:id="@+id/finalbutton"
+                style="@style/matchWarp"
+                android:layout_below="@+id/recylcerview"
+                android:layout_margin="@dimen/ten_dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/rounbutton"
+                    android:onClick="previewsubmission"
+                    android:visibility="gone"
+                    android:text="@string/preview_submit"
+                    android:textColor="@android:color/white"/>
+
+                <Button
+                    android:id="@+id/btn_submit"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="0.5"
+                    android:background="@drawable/rounbutton"
+                    android:onClick="Finaldone"
+                    android:text="@string/submit"
+                    android:textColor="@android:color/white"
+                    android:textOff="@string/submit"
+                    android:textOn="@string/running"/>
+
+
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tv_logoutput"
+                style="@style/wrapContent"
+                android:layout_below="@+id/finalbutton"
+                android:layout_centerInParent="true"
+                android:gravity="center"
+                android:text="@string/log_output"
+                android:textColor="#000000"
+                android:textStyle="bold">
+
+            </TextView>
+
+
+
+            <LinearLayout
+               style="@style/matchParent"
+                android:layout_below="@+id/tv_logoutput"
+                android:orientation="vertical">
+
+                <ListView
+                    android:id="@+id/deviceListView"
+                    android:layout_width="fill_parent"
+                    android:layout_height="@dimen/_500sdp"
+                    android:animationCache="false"
+                    android:divider="@null"
+                    android:scrollingCache="false"
+                    android:smoothScrollbar="true" />
+            </LinearLayout>
+        </RelativeLayout>
+    </ScrollView>
+
+</LinearLayout>

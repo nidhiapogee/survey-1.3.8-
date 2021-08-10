@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    style="@style/matchParent"
+    android:orientation="vertical"
+    android:background="@drawable/dialog_positive_round">
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/card_view"
+        xmlns:card_view="http://schemas.android.com/apk/res-auto"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_50sdp"
+        card_view:cardBackgroundColor="@color/color_bluedark"
+        card_view:cardCornerRadius="@dimen/ten_dp"
+        card_view:cardElevation="@dimen/one_dp"
+        card_view:cardUseCompatPadding="true">
+
+        <LinearLayout
+            android:id="@+id/lay"
+            style="@style/matchParent"
+            android:layout_marginTop="0dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/cmethodtext"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_marginStart="@dimen/twenty_dp"
+                android:gravity="center"
+                android:text="@string/antenna_height"
+                android:textColor="@color/white"
+                android:textSize="@dimen/twenty_sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </androidx.cardview.widget.CardView>
+
+
+    <LinearLayout
+        style="@style/matchWarp"
+        android:layout_margin="@dimen/ten_dp"
+        android:orientation="horizontal">
+
+        <TextView
+           style="@style/wrapContent"
+            android:text="@string/operation"
+            android:textColor="@color/textColorPrimary"
+            android:textSize="@dimen/text_size_eighteen"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/antennatype"
+            style="@style/matchWarp"
+            android:layout_alignParentTop="true"
+            android:layout_toEndOf="@+id/textView2"
+            android:layout_toRightOf="@+id/textView2"
+            android:gravity="end"
+            android:textColor="@color/textColorPrimary" />
+
+
+    </LinearLayout>
+
+
+
+
+    <EditText
+        android:layout_marginTop="@dimen/ten_dp"
+        android:id="@+id/nm"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:text="@string/name"
+        android:background="@drawable/editbox"
+        android:layout_height="@dimen/forty_dp"/>
+
+
+
+    <EditText
+        android:layout_marginTop="@dimen/twenty_dp"
+        android:id="@+id/rds"
+        android:gravity="center"
+        android:layout_width="match_parent"
+        android:text="@string/_2_00"
+        android:maxLength="6"
+        android:inputType="numberDecimal"
+        android:background="@drawable/editbox"
+        android:layout_height="@dimen/forty_dp">
+
+    </EditText>
+
+    <TextView
+        android:layout_margin="@dimen/_5sdp"
+        android:text="@string/height_in_meter"
+       style="@style/wrapContent" />
+
+
+
+    <ImageView
+        android:id="@+id/imgv"
+        android:layout_marginTop="@dimen/ten_dp"
+        android:background="@drawable/vertical"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/three_fifty_dp">
+
+    </ImageView>
+
+    <LinearLayout
+        style="@style/matchWarp">
+
+        <Button
+            style="@style/matchWarp"
+            android:id="@+id/antnabtn"
+            android:text="@string/done"
+            android:layout_gravity="bottom"
+            android:textColor="@color/white"
+            android:background="@drawable/rounbutton" />
+    </LinearLayout>
+
+</LinearLayout>
