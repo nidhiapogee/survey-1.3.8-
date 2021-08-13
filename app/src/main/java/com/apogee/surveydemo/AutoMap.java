@@ -1,3 +1,6 @@
+
+
+
 package com.apogee.surveydemo;
 
 import android.Manifest;
@@ -135,7 +138,8 @@ public class AutoMap extends FragmentActivity implements OnMapReadyCallback, Goo
 
     public static String latitu ="";
     public static String longti = "";
-
+    List<String> taskid = new ArrayList<>();
+    List<String> recordSurvey = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -194,6 +198,8 @@ public class AutoMap extends FragmentActivity implements OnMapReadyCallback, Goo
         }
         dbTask.open();
         tskid = dbTask.gettaskid(taskname);
+        taskid =  dbTask.gettaskid();
+        recordSurvey =  dbTask.gettaskSurvey();
 
         simpleSwitch.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
@@ -212,88 +218,98 @@ public class AutoMap extends FragmentActivity implements OnMapReadyCallback, Goo
 
 
         stakeMap.setOnClickListener(v -> {
-               if(!latitu.equals("")&&!longti.equals("") && checkValidation()) {
-                   Intent intent = new Intent(AutoMap.this, StakeMapCustom.class);
-                   intent.putExtra("FromStake",false);
-                   startActivity(intent);
-               }else if(checkValidation()) {
-                   Intent intent = new Intent(AutoMap.this, StakeMapCustom.class);
-                   intent.putExtra("FromStake",false);
-                   startActivity(intent);
-                    Toast.makeText(AutoMap.this, "Lat/Lng not available", Toast.LENGTH_SHORT).show();
-               }
-
+            if(!taskid.contains(String.valueOf(tskid)) || !recordSurvey.contains("Auto Survey")){
+                    if(!latitu.equals("")&&!longti.equals("") && checkValidation()) {
+                        Intent intent = new Intent(AutoMap.this, StakeMapCustom.class);
+                        intent.putExtra("FromStake",false);
+                        startActivity(intent);
+                    }else if(checkValidation()) {
+                        Intent intent = new Intent(AutoMap.this, StakeMapCustom.class);
+                        intent.putExtra("FromStake",false);
+                        startActivity(intent);
+                        Toast.makeText(AutoMap.this, "Lat/Lng not available", Toast.LENGTH_SHORT).show();
+                    }
+                }else {
+                    Toast.makeText(AutoMap.this, "Please create another task", Toast.LENGTH_SHORT).show();
+                }
 
 
         });
 
         /*Button for switch configuration*/
         btn1.setOnClickListener(v -> {
-            if (!finish) {
-                finish = true;
-                btn1.setBackgroundColor(getResources().getColor(R.color.colorred));
-                if (simpleSwitch.isChecked()) {
-                    int tdtime;
-                    try {
-                        tdtime = Integer.parseInt(vall.getText().toString());
-                    } catch (NumberFormatException ex) {
-                        finish = false;
-                        btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
-                        //They didn't enter a number.  Pop up a toast or warn them in some other way
-                        Toast.makeText(getApplicationContext(), getString(R.string.please_enter_a_valid_number), Toast.LENGTH_SHORT).show();
-                        return;
-                    }
+            if(!taskid.contains(String.valueOf(tskid)) && !recordSurvey.contains("Auto Survey")){
+                    if (!finish) {
+                        finish = true;
+                        btn1.setBackgroundColor(getResources().getColor(R.color.colorred));
+                        if (simpleSwitch.isChecked()) {
+                            int tdtime;
+                            try {
+                                tdtime = Integer.parseInt(vall.getText().toString());
+                            } catch (NumberFormatException ex) {
+                                finish = false;
+                                btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
+                                //They didn't enter a number.  Pop up a toast or warn them in some other way
+                                Toast.makeText(getApplicationContext(), getString(R.string.please_enter_a_valid_number), Toast.LENGTH_SHORT).show();
+                                return;
+                            }
 
-                    String lat_long = dle.lat_lang;
-                    if (latitude !=0.0 && longitude != 0.0) {
-                        threadtime = tdtime * 1000;
-                        timesurvey();
-                    } else {
-                        Toast.makeText(getApplicationContext(), getString(R.string.configure_rtk_first), Toast.LENGTH_SHORT).show();
-                    }
+                            String lat_long = dle.lat_lang;
+                            if (latitude !=0.0 && longitude != 0.0) {
+                                threadtime = tdtime * 1000;
+                                timesurvey();
+                            } else {
+                                Toast.makeText(getApplicationContext(), getString(R.string.configure_rtk_first), Toast.LENGTH_SHORT).show();
+                            }
 
-                } else {
-                    try {
-                        String lat_long = dle.lat_lang;
-                        if (latitude !=0.0 && longitude != 0.0) {
-                            distance = Integer.parseInt(vall.getText().toString());
-                            distancemode=true;
-                          //  distancepoints();
                         } else {
-                            Toast.makeText(getApplicationContext(), getString(R.string.configure_rtk_first), Toast.LENGTH_SHORT).show();
+                            try {
+                                String lat_long = dle.lat_lang;
+                                if (latitude !=0.0 && longitude != 0.0) {
+                                    distance = Integer.parseInt(vall.getText().toString());
+                                    distancemode=true;
+                                    //  distancepoints();
+                                } else {
+                                    Toast.makeText(getApplicationContext(), getString(R.string.configure_rtk_first), Toast.LENGTH_SHORT).show();
+                                }
+
+
+                            } catch (NumberFormatException ex) {
+                                finish = false;
+                                btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
+                                pname.setText("");
+                                pcode.setText("");
+                                point = new int[]{1};
+                                distancemode=false;
+                                //They didn't enter a number.  Pop up a toast or warn them in some other way
+                                Toast.makeText(getApplicationContext(), getString(R.string.please_enter_a_valid_number), Toast.LENGTH_SHORT).show();
+                                return;
+                            }
                         }
-
-
-                    } catch (NumberFormatException ex) {
+                    } else if (finish) {
                         finish = false;
-                        btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
+                        threadtime = 0;
                         pname.setText("");
                         pcode.setText("");
-                        point = new int[]{1};
+                        pointname=null;
                         distancemode=false;
-                        //They didn't enter a number.  Pop up a toast or warn them in some other way
-                        Toast.makeText(getApplicationContext(), getString(R.string.please_enter_a_valid_number), Toast.LENGTH_SHORT).show();
-                        return;
+                        point = new int[]{1};
+                        if (t.isAlive()) {
+                            t.interrupt();
+                        }
+                        if(t2.isAlive()){
+                            t2.interrupt();
+                            firsttime=false;
+                        }
+                        btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
+                        Toast.makeText(AutoMap.this, getString(R.string.survey_finished), Toast.LENGTH_SHORT).show();
                     }
+                }else {
+                    Toast.makeText(AutoMap.this, "Please create another task", Toast.LENGTH_SHORT).show();
                 }
-            } else if (finish) {
-                finish = false;
-                threadtime = 0;
-                pname.setText("");
-                pcode.setText("");
-                pointname=null;
-                distancemode=false;
-                point = new int[]{1};
-                if (t.isAlive()) {
-                    t.interrupt();
-                }
-                if(t2.isAlive()){
-                    t2.interrupt();
-                    firsttime=false;
-                }
-                btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
-                Toast.makeText(AutoMap.this, getString(R.string.survey_finished), Toast.LENGTH_SHORT).show();
-            }
+
+
+
         });
     }
 
@@ -581,8 +597,8 @@ public class AutoMap extends FragmentActivity implements OnMapReadyCallback, Goo
                     finalalti =  antennadatacalculation(altitude);
                     antennaheight=antennaht.getText().toString().trim();
 
-                  /*  latitu = lati;
-                    longti = longi;*/
+                    latitu = lati;
+                    longti = longi;
                     if(distancemode){
                         distancepoints(easting,northing,estng2,northing2);
                     }

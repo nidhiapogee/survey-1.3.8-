@@ -10,8 +10,6 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
-
-import com.apogee.surveydemo.model.BleModel;
 import com.apogee.surveydemo.utility.BLEService;
 
 public class IPActivity extends AppCompatActivity {
@@ -39,19 +37,16 @@ public class IPActivity extends AppCompatActivity {
             e2.setText(pprt);
         }
 
-        b1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String ip = e1.getText().toString();
-                String port = e2.getText().toString();
-                SharedPreferences.Editor editor = sharedPreferences.edit();
-                editor.putString(IP, ip);
-                editor.putString(PORT, port);
-                editor.commit();
-                Intent intentService = new Intent(IPActivity.this, BLEService.class);
-                startService(intentService);
-                Toast.makeText(IPActivity.this, ip+"_"+port, Toast.LENGTH_SHORT).show();
-            }
+        b1.setOnClickListener(v -> {
+            String ip = e1.getText().toString();
+            String port = e2.getText().toString();
+            SharedPreferences.Editor editor = sharedPreferences.edit();
+            editor.putString(IP, ip);
+            editor.putString(PORT, port);
+            editor.apply();
+            Intent intentService = new Intent(IPActivity.this, BLEService.class);
+            startService(intentService);
+            Toast.makeText(IPActivity.this, ip+"_"+port, Toast.LENGTH_SHORT).show();
         });
 
 

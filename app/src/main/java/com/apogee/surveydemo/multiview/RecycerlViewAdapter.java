@@ -2,6 +2,7 @@ package com.apogee.surveydemo.multiview;
 
 
 import android.content.Context;
+import android.content.Intent;
 import android.text.InputType;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -13,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.apogee.surveydemo.Database.DatabaseOperation;
 import com.apogee.surveydemo.R;
+import com.apogee.surveydemo.activity.AutoSurveyVideoActivity;
 
 import java.nio.ByteBuffer;
 import java.nio.ByteOrder;
@@ -27,7 +29,7 @@ public class RecycerlViewAdapter extends RecyclerView.Adapter {
     String lng = "";
     String alti = "";
     String accuracy = "";
-
+     String operat = "";
     public RecycerlViewAdapter(List<ItemType> itemTypeList, OnItemValueListener onItemValueListener) {
         this.itemTypeList = itemTypeList;
         this.onItemValueListener = onItemValueListener;
@@ -109,24 +111,18 @@ public class RecycerlViewAdapter extends RecyclerView.Adapter {
                     inputProjectlist.itemView.setBackgroundColor(inputProjectlist.itemView.getContext().getResources().getColor(R.color.colorDarkDim));
                 }
 
-                inputProjectlist.itemView.setOnLongClickListener(new View.OnLongClickListener() {
-                    @Override
-                    public boolean onLongClick(View v) {
-                        selectedposition=position;
-                        onItemValueListener.returnValue(inputProjectlist.txtpname.getText().toString()+"##longclick", inputProjectlist.txttime.getText().toString(),position,operation);
-                        notifyDataSetChanged();
-                        return false;
-                    }
+                inputProjectlist.itemView.setOnLongClickListener(v -> {
+                    selectedposition=position;
+                    onItemValueListener.returnValue(inputProjectlist.txtpname.getText().toString()+"##longclick", inputProjectlist.txttime.getText().toString(),position,operation);
+                    notifyDataSetChanged();
+                    return false;
                 });
 
-                inputProjectlist.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                inputProjectlist.itemView.setOnClickListener(v -> {
 
-                        selectedposition=position;
-                        onItemValueListener.returnValue(inputProjectlist.txtpname.getText().toString()+"##onclick", inputProjectlist.txttime.getText().toString(),position,operation);
-                        notifyDataSetChanged();
-                    }
+                    selectedposition=position;
+                    onItemValueListener.returnValue(inputProjectlist.txtpname.getText().toString()+"##onclick", inputProjectlist.txttime.getText().toString(),position,operation);
+                    notifyDataSetChanged();
                 });
 
                 break;
@@ -134,23 +130,41 @@ public class RecycerlViewAdapter extends RecyclerView.Adapter {
             case ItemType.INPUTONLYTEXT:
                 final inputonlytext onlytxt = (inputonlytext) holder;
                 onlytxt.txtheader.setText(itemType.title);
-                onlytxt.txtval.setText(itemType.oprtr);
                 onlytxt.setBackgroundView(position);
-                final String operat = itemType.oprtr;
+                   String videoPath ="";
+                if( itemType.oprtr.split(",").length == 5){
+                    String esting =  itemType.oprtr.split(",")[0];
+                    String northing = itemType.oprtr.split(",")[1];
+                    String elevation = itemType.oprtr.split(",")[2];
+                    String zone = itemType.oprtr.split(",")[3];
+                    videoPath   = itemType.oprtr.split(",")[4];
+                    operat = esting +","+ northing+ ","+elevation+","+zone;
+                    onlytxt.view.setVisibility(View.VISIBLE);
+
+                }else {
+                    operat = itemType.oprtr;
+                    onlytxt.view.setVisibility(View.GONE);
+                }
+
+                onlytxt.txtval.setText(operat);
                 if (selectedposition != position) {
                     onlytxt.itemView.setBackgroundColor(onlytxt.itemView.getContext().getResources().getColor(R.color.white));
                 } else {
                     onlytxt.itemView.setBackgroundColor(onlytxt.itemView.getContext().getResources().getColor(R.color.colorDarkDim));
                 }
 
-                onlytxt.itemView.setOnClickListener(new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
+                onlytxt.itemView.setOnClickListener(v -> {
 
-                        selectedposition=position;
-                        onItemValueListener.returnValue(onlytxt.txtheader.getText().toString(), onlytxt.txtval.getText().toString(),position,operat);
-                        notifyDataSetChanged();
-                    }
+                    selectedposition=position;
+                    onItemValueListener.returnValue(onlytxt.txtheader.getText().toString(), onlytxt.txtval.getText().toString(),position,operat);
+                    notifyDataSetChanged();
+                });
+
+                String finalVideoPath = videoPath;
+                onlytxt.view.setOnClickListener(v -> {
+                      Intent intent = new Intent(context, AutoSurveyVideoActivity.class);
+                      intent.putExtra("videoPath", finalVideoPath);
+                      context.startActivity(intent);
                 });
                 break;
         }
@@ -203,8 +217,8 @@ public class RecycerlViewAdapter extends RecyclerView.Adapter {
 
         char[] charinput = input.toCharArray();
         StringBuilder stringBuilder = new StringBuilder();
-        for (int i = 0; i < charinput.length; i++) {
-            stringBuilder.append(Integer.toHexString(charinput[i]));
+        for (char c : charinput) {
+            stringBuilder.append(Integer.toHexString(c));
         }
         return stringBuilder.toString();
     }

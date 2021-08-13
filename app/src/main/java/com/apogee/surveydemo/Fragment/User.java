@@ -12,7 +12,6 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.cardview.widget.CardView;
 import androidx.fragment.app.Fragment;
@@ -47,12 +46,12 @@ public class User extends Fragment implements OnItemValueListener {
     Spinner modeltype,modelname;
     ArrayList<String> modeltypeList,mnList;
     DatabaseOperation dbTask;
-    TextView mnText;
+    TextView mnText,tvmt;
     CardView Card1;
     int model_type_id=0;
     String dgps_id = "0",device_id;
     Button connectBtn2;
-    Map<String, String> selectionValue1 = new HashMap<String, String>();
+    Map<String, String> selectionValue1 = new HashMap<>();
 
     String ble_device_name;
     String dgps_device_name;
@@ -71,9 +70,9 @@ public class User extends Fragment implements OnItemValueListener {
         final Context context = inflater.getContext();
         /*Model Detail*/
         dbTask=new DatabaseOperation(context);
-        modeltype= view.findViewById(R.id.mt);
         mnText= view.findViewById(R.id.mntxt);
         modelname= view.findViewById(R.id.mn);
+        tvmt = view.findViewById(R.id.tvmt);
         connectBtn2 = view. findViewById(R.id.connect1);
         Card1 = view. findViewById(R.id.card_view);
 
@@ -88,37 +87,16 @@ public class User extends Fragment implements OnItemValueListener {
         modeltypeList=new ArrayList<>();
         dbTask.open();
 
-        modeltypeList = dbTask.getmodel_type();
-        modelname.setVisibility(View.INVISIBLE);
-        connectBtn2.setVisibility(View.INVISIBLE);
-        final ArrayAdapter<String> model_typeAdapter = new ArrayAdapter<String>(context, android.R.layout.simple_spinner_item, modeltypeList);
-        model_typeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        modeltype.setAdapter(model_typeAdapter);
+        tvmt.setText(getString(R.string.finished));
 
-        modeltype.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String item = parent.getItemAtPosition(position).toString();
-                if (item.equals(getString(R.string.finished))) {
-                    modelname.setVisibility(View.VISIBLE);
-                    connectBtn2.setVisibility(View.VISIBLE);
-                    dbTask.open();
-                    model_type_id=dbTask.getModelType_id(item);
-                    mnList = dbTask.getmnypes(model_type_id);
-                    ArrayAdapter<String> mnAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, mnList);
-                    mnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-                    modelname.setAdapter(mnAdapter);
-                }else{
-                    Toast.makeText(context, getString(R.string.wrong_selection), Toast.LENGTH_SHORT).show();
-                }
+        modelname.setVisibility(View.VISIBLE);
+        connectBtn2.setVisibility(View.VISIBLE);
+        model_type_id=dbTask.getModelType_id(getString(R.string.finished));
+        mnList = dbTask.getmnypes(model_type_id);
+        ArrayAdapter<String> mnAdapter = new ArrayAdapter<>(context, android.R.layout.simple_spinner_item, mnList);
+        mnAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        modelname.setAdapter(mnAdapter);
 
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
-
-            }
-        });
         modelname.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {

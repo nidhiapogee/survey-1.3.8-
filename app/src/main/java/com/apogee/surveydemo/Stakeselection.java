@@ -138,8 +138,9 @@ public class Stakeselection extends AppCompatActivity implements OnItemValueList
             String id = val.split(",")[3];
             String elvtn = val.split(",")[4];
             String zone = val.split(",")[5];
+            String videoPath = val.split(",")[6];
             pointmap.put(pnm,id);
-            itemTypeList.add(new ItemType(ItemType.INPUTONLYTEXT,pnm , null,"Easting : "+est+", Northing : "+nrth+", Elevation : "+elvtn+", Zone : "+zone,null,null));
+            itemTypeList.add(new ItemType(ItemType.INPUTONLYTEXT,pnm , null,"Easting : "+est+", Northing : "+nrth+", Elevation : "+elvtn+", Zone : "+zone+","+videoPath,null,null));
             recycerlViewAdapter.notifyDataSetChanged();
 
 

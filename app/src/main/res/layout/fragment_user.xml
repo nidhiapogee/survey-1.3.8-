@@ -55,15 +55,15 @@
             android:textSize="18dp"
             android:textStyle="bold"
             android:layout_centerHorizontal="true" />
-        <Spinner
+
+        <TextView
+            android:id="@+id/tvmt"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/mt"
-            android:layout_gravity="end"
+            android:layout_marginLeft="20dp"
             android:textColor="@color/textColorPrimary"
-            android:layout_alignParentTop="true"
-            android:layout_toRightOf="@+id/textView2"
-            android:layout_toEndOf="@+id/textView2" />
+            android:textSize="18dp"
+            android:layout_centerHorizontal="true" />
 
 
     </LinearLayout>

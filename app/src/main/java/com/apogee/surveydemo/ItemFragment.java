@@ -87,9 +87,6 @@ public class ItemFragment extends Fragment {
                 List<Operation> operationList = new Gson().fromJson(json, type);
 
                 recyclerView.setAdapter(new MyItemRecyclerViewAdapter(operationList, mListener));
-//                DividerItemDecoration dividerItemDecoration = new DividerItemDecoration(recyclerView.getContext(),
-//                      new LinearLayoutManager(getContext()).getOrientation());
-//                recyclerView.addItemDecoration(dividerItemDecoration);
             }else{
                 alertdialog();
             }
@@ -106,12 +103,10 @@ public class ItemFragment extends Fragment {
 
         builder1.setPositiveButton(
                 "oK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        Intent intent = new Intent(getContext(),Connect.class);
-                        startActivity(intent);
-                        dialog.cancel();
-                    }
+                (dialog, id) -> {
+                    Intent intent = new Intent(getContext(),Connect.class);
+                    startActivity(intent);
+                    dialog.cancel();
                 });
 
 

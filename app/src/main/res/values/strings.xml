@@ -399,4 +399,6 @@
     <string name="dash">-</string>
     <string name="send_via_telegram">Send Via Telegram</string>
 
+    <string name="view">View</string>
+
 </resources>

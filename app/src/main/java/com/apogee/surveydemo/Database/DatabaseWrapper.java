@@ -412,6 +412,7 @@ public class DatabaseWrapper extends SQLiteOpenHelper {
             + " AntennaHeight TEXT DEFAULT NULL,"
             + " RecordType TEXT DEFAULT NULL,"
             + " PrecisionType TEXT DEFAULT NULL,"
+            + " VideoPath TEXT DEFAULT NULL,"
             + " timestamp TEXT NOT NULL DEFAULT CURRENT_TIMESTAMP,"
             + " FOREIGN KEY (task_id) REFERENCES Task_table(task_id)"
             + ");";

@@ -1,6 +1,7 @@
 package com.apogee.surveydemo.multiview;
 
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -13,6 +14,7 @@ import com.apogee.surveydemo.R;
 public class inputonlytext extends RecyclerView.ViewHolder {
     TextView txtheader;
     TextView txtval;
+    Button view;
 
     public void setBackgroundView(int position) {
 
@@ -24,14 +26,12 @@ public class inputonlytext extends RecyclerView.ViewHolder {
 
         txtheader = itemView.findViewById(R.id.txtinput);
         txtval = itemView.findViewById(R.id.txtinput2);
+        view = itemView.findViewById(R.id.btView);
 
-        itemView.setOnLongClickListener(new View.OnLongClickListener() {
-            @Override
-            public boolean onLongClick(View v) {
+        itemView.setOnLongClickListener(v -> {
 
-                onItemValueListener.returnValue(txtheader.getText().toString(), txtval.getText().toString(),getAdapterPosition(),"");
-                return false;
-            }
+            onItemValueListener.returnValue(txtheader.getText().toString(), txtval.getText().toString(),getAdapterPosition(),"");
+            return false;
         });
     }
 }

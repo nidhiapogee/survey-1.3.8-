@@ -131,12 +131,13 @@
 
             <LinearLayout
                 style="@style/wrapContent"
-                android:orientation="vertical"
-                android:layout_weight="1">
+                android:orientation="vertical">
 
                 <LinearLayout
                    style="@style/wrapContent"
-                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     android:orientation="horizontal">
 
                     <TextView
@@ -159,7 +160,9 @@
                 </LinearLayout>
 
                 <LinearLayout
-                    android:layout_margin="@dimen/_10sdp"
+                    android:layout_marginTop="@dimen/_10sdp"
+                    android:layout_marginStart="@dimen/_10sdp"
+                    android:layout_marginBottom="@dimen/_10sdp"
                     style="@style/wrapContent"
                     android:orientation="horizontal">
 
@@ -184,7 +187,6 @@
 
             <LinearLayout
                 style="@style/wrapContent"
-                android:layout_weight="1"
                 android:orientation="vertical">
 
                 <ru.dimorinny.floatingtextbutton.FloatingTextButton
@@ -211,7 +213,15 @@
 
             </LinearLayout>
 
-
+            <ru.dimorinny.floatingtextbutton.FloatingTextButton
+                android:id="@+id/btimage"
+                style="@style/wrapContent"
+                android:layout_gravity="center_vertical"
+                android:layout_marginStart="@dimen/_10sdp"
+                app:floating_background_color="@color/colorgreen"
+                app:floating_left_icon="@drawable/ic_baseline_photo_camera_24"
+                app:floating_title_color="@android:color/white"
+                app:layout_behavior="ru.dimorinny.floatingtextbutton.behavior.SnackbarBehavior" />
 
         </LinearLayout>
 

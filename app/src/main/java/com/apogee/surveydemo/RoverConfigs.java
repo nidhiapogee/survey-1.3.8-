@@ -10,7 +10,6 @@ import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -56,7 +55,7 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
     private final static String TAG = DeviceControlActivity.class.getSimpleName();
     int  device_id = 0;
     String devicedetail;
-    LinearLayout connect, home, toolback;
+    LinearLayout connect, home;
     private TextView mConnectionState,bttxt;
     DeviceControlActivity dca = new  DeviceControlActivity();
     ImageView bleimg,btimg;
@@ -214,36 +213,24 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
         home = findViewById(R.id.homelay);
         btimg = findViewById(R.id.btimg);
         bttxt = findViewById(R.id.bttxt);
-        String d_id = intent.getStringExtra("device_id");
         toolbar=findViewById(R.id.tool);
         tts = new TextToSpeech(this, this);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
+        toolbar.setNavigationOnClickListener(view -> onBackPressed());
+        connect.setOnClickListener(view -> {
+            if (mConnected) {
+                mBluetoothLeService.disconnect();
+                bleimg.setImageResource(R.drawable.ic_baseline_bluetooth_connected_24);
+            } else {
+                mBluetoothLeService.connect(mDeviceAddress);
+                bleimg.setImageResource(R.drawable.ic_baseline_bluetooth_disabled_24);
             }
         });
-        connect.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (mConnected) {
-                    mBluetoothLeService.disconnect();
-                    bleimg.setImageResource(R.drawable.ic_baseline_bluetooth_connected_24);
-                } else {
-                    mBluetoothLeService.connect(mDeviceAddress);
-                    bleimg.setImageResource(R.drawable.ic_baseline_bluetooth_disabled_24);
-                }
-            }
-        });
-        home.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent1 = new Intent(RoverConfigs.this, HomeActivity.class);
-                intent1.putExtra("mode",operation);
-                intent.putExtra("deviceaddress",mDeviceAddress);
-                startActivity(intent1);
-            }
+        home.setOnClickListener(view -> {
+            Intent intent1 = new Intent(RoverConfigs.this, HomeActivity.class);
+            intent1.putExtra("mode",operation);
+            intent.putExtra("deviceaddress",mDeviceAddress);
+            startActivity(intent1);
         });
 
         dbTask.open();
@@ -284,10 +271,8 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
     }
 
     private AdapterView.OnItemClickListener mDeviceClickListener
-            = new AdapterView.OnItemClickListener() {
-        public void onItemClick(AdapterView<?> av, View v, int arg2, long arg3) {
-        }
-    };
+            = (av, v, arg2, arg3) -> {
+            };
 
 
 
@@ -337,12 +322,10 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
 
         builder1.setPositiveButton(
                 getString(R.string.ok_configure),
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                        test();
-                        commandout();
-                    }
+                (dialog, id) -> {
+                    dialog.cancel();
+                    test();
+                    commandout();
                 });
 
         AlertDialog alert11 = builder1.create();
@@ -386,11 +369,10 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
             colums[2]=getvall;
         }
         StringBuffer sb = new StringBuffer();
-        for(int i = 0; i < colums.length; i++) {
-            sb.append(colums[i]+"2C");
+        for (String colum : colums) {
+            sb.append(colum + "2C");
         }
         String str = sb.toString();
-        //  param = param.substring(0, 34)+modee+ param.substring(34 + 2);
         newCommandList.remove(0);
         newCommandList.add(0,str);
     }
@@ -398,8 +380,8 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
     public String stringtohex(String str){
         char ch[] = str.toCharArray();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < ch.length; i++) {
-            sb.append(Integer.toHexString((int) ch[i]));
+        for (char c : ch) {
+            sb.append(Integer.toHexString((int) c));
         }
         return sb.toString();
     }
@@ -420,29 +402,23 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
 
         dialogBuilder.setCancelable(true);
 
-        button2.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent intent = new Intent(RoverConfigs.this, HomeActivity.class);
-                intent.putExtra("mode",operation);
-                startActivity(intent);
-                dialogBuilder.dismiss();
-            }
+        button2.setOnClickListener(view -> {
+            Intent intent = new Intent(RoverConfigs.this, HomeActivity.class);
+            intent.putExtra("mode",operation);
+            startActivity(intent);
+            dialogBuilder.dismiss();
         });
 
-        button1.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                dialogBuilder.dismiss();
-                mBluetoothLeService.serverDisconnect();
-                mConnected=false;
-                dca.mConnected=false;
-                Intent intent = new Intent(RoverConfigs.this, HomeActivity.class);
-                intent.putExtra("mode",operation);
-                intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                finish();
-                startActivity(intent);
-            }
+        button1.setOnClickListener(view -> {
+            dialogBuilder.dismiss();
+            mBluetoothLeService.serverDisconnect();
+            mConnected=false;
+            dca.mConnected=false;
+            Intent intent = new Intent(RoverConfigs.this, HomeActivity.class);
+            intent.putExtra("mode",operation);
+            intent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK);
+            finish();
+            startActivity(intent);
         });
 
         dialogBuilder.setView(dialogView);
@@ -456,20 +432,13 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
 
     private void
     commandout() {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mBluetoothLeService.send("item", RoverConfigs.this, false, false, newCommandList, delaylist,null);
-            }
-        });
+        runOnUiThread(() -> mBluetoothLeService.send("item", RoverConfigs.this, false, false, newCommandList, delaylist,null));
     }
 
     private void test(){
         final ProgressDialog dddialog;
         dddialog = new ProgressDialog(RoverConfigs.this);
-        String title = null;
-        int val=0;
-            val = newCommandList.size();
+        int val = newCommandList.size();
 
         // Set your progress dialog Title
         dddialog.setTitle(getString(R.string.command_configuration));
@@ -485,50 +454,43 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
 
         final Message msg = new Message();
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (dddialog.getProgress() <= dddialog
+        new Thread(() -> {
+            try {
+                while (dddialog.getProgress() <= dddialog
+                        .getMax()) {
+                    if (counter==dddialog.getProgress()){
+                        dddialog.incrementProgressBy(1);
+                    }else if(counter==19977){
+                        msg.arg1=1;
+                        handler.sendMessage(msg);
+                        dddialog.dismiss();
+                    }
+                    if (dddialog.getProgress() == dddialog
                             .getMax()) {
-                        if (counter==dddialog.getProgress()){
-                            dddialog.incrementProgressBy(1);
-                        }else if(counter==19977){
+                        dddialog.dismiss();
+                        if(issuccess){
+                            msg.arg1=2;
+                            handler.sendMessage(msg);
+                        }else{
                             msg.arg1=1;
                             handler.sendMessage(msg);
-                            dddialog.dismiss();
-                        }
-                        if (dddialog.getProgress() == dddialog
-                                .getMax()) {
-                            dddialog.dismiss();
-                            if(issuccess){
-                                msg.arg1=2;
-                                handler.sendMessage(msg);
-                            }else{
-                                msg.arg1=1;
-                                handler.sendMessage(msg);
-                            }
                         }
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }).start();
     }
 
-    Handler handler = new Handler(new Handler.Callback() {
-
-        @Override
-        public boolean handleMessage(Message msg) {
-            if(msg.arg1==1)
-            {
-                dialogsuccess("OOPS!");
-            }else if(msg.arg1==2){
-                dialogsuccess("YES");
-            }
-            return false;
+    Handler handler = new Handler(msg -> {
+        if(msg.arg1==1)
+        {
+            dialogsuccess("OOPS!");
+        }else if(msg.arg1==2){
+            dialogsuccess("YES");
         }
+        return false;
     });
 
     public void dialogsuccess(String msg){
@@ -552,12 +514,7 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
         }
 
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogBuilder.dismiss();
-            }
-        });
+        button.setOnClickListener(v -> dialogBuilder.dismiss());
 
         dialogBuilder.setView(dialogView);
         dialogBuilder.show();
@@ -569,12 +526,7 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
 
 
     private void updateConnectionState(final int resourceId) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mConnectionState.setText(resourceId);
-            }
-        });
+        runOnUiThread(() -> mConnectionState.setText(resourceId));
     }
 
     private void displayData(String data) {
@@ -670,14 +622,11 @@ public class RoverConfigs extends AppCompatActivity implements OnItemValueListen
 
     private void delayBatteryStatus(){
         final Handler handler = new Handler();
-        handler.postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                //Write whatever to want to do after delay specified (1 sec)
-                Log.d("Handler", "Running Handler");
-                speakOut(getString(R.string.battery_low));
-                delayBatteryStatus();
-            }
+        handler.postDelayed(() -> {
+            //Write whatever to want to do after delay specified (1 sec)
+            Log.d("Handler", "Running Handler");
+            speakOut(getString(R.string.battery_low));
+            delayBatteryStatus();
         }, 5000);
     }
 }

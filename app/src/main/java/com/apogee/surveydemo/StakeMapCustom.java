@@ -43,6 +43,7 @@ import android.view.animation.RotateAnimation;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.RelativeLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.widget.AppCompatImageButton;
@@ -59,10 +60,12 @@ import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.List;
 
 import static com.apogee.surveydemo.AutoMap.simpleSwitch;
 import static com.apogee.surveydemo.Generic.taskGeneric.Name;
 import static com.apogee.surveydemo.MeterActivity.TAG;
+import static java.lang.Math.PI;
 import static java.lang.String.valueOf;
 
 
@@ -167,11 +170,15 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
     ArrayList<Double> referValueXpoint2 = new ArrayList<>();
     ArrayList<Double> referValueYpoint2 = new ArrayList<>();
     boolean isFirstReferencepoint2 = true;
+    File newfile;
+
+    TextView tvdistance;
+
     Runnable timerRunnable = new Runnable() {
 
         @Override
         public void run() {
-       /*  if (count == 0) {
+        /*if (count == 0) {
                 count++;
                 abc(latValue.get(0), lngValue.get(0));
             } else if (count == 1) {
@@ -195,7 +202,7 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
             }else if(count == 7){
                 count++;
                 abc(latValue.get(7), lngValue.get(7));
-            }else if(count == 8){
+            } else if(count == 8){
                 count++;
                 abc(latValue.get(8), lngValue.get(8));
             }else if(count == 9){
@@ -249,6 +256,8 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
                }*/
 
 
+
+           if(AutoMap.latitu != null && !AutoMap.latitu.isEmpty() && AutoMap.longti != null && !AutoMap.longti.isEmpty())
             abc(AutoMap.latitu, AutoMap.longti);
               if (simpleSwitch.isChecked()) {
                 int tdtime = Integer.parseInt(AutoMap.vall.getText().toString());
@@ -265,7 +274,7 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
 
         @Override
         public void run() {
-   /*   if (count == 0) {
+   /*  if (count == 0) {
                 count++;
                 abc(latValue.get(1), lngValue.get(1));
             } else if (count == 1) {
@@ -292,7 +301,7 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
             }else if(count == 8){
                 count++;
                 abc(latValue.get(9), lngValue.get(9));
-            }else if(count == 9){
+            } else if(count == 9){
                 count++;
                 abc(latValue.get(9), lngValue.get(9));
             }else if(count == 10){
@@ -310,7 +319,13 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
             }else if(count == 14){
                 count++;
                 abc(latValue.get(14), lngValue.get(14));
-            }*/
+            }else if(count == 15){
+             count++;
+             abc(latValue.get(15), lngValue.get(15));
+          }else if(count == 16){
+            count++;
+            abc(latValue.get(16), lngValue.get(16));
+         }*/
 
             if(latitude1 != null && !latitude1.isEmpty() && longitude1 != null && !longitude1.isEmpty()){
                 abc(latitude1, longitude1);
@@ -333,6 +348,7 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
 
         s1 = findViewById(R.id.s1);
         s2 = findViewById(R.id.s2);
+        tvdistance = findViewById(R.id.tvdistance);
         rldata = findViewById(R.id.rldata);
         rldata.setOnTouchListener(null);
         BitmapDrawable abmp = (BitmapDrawable) imgSource1.getDrawable();
@@ -347,35 +363,45 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
 
 
 
+        latValue.add("732281.824");
+        latValue.add("732345.619");
+        latValue.add("732345.878");
+        latValue.add("732346.002");
+        latValue.add("732342.423");
+        latValue.add("732340.848");
+        latValue.add("732341.893");
+        latValue.add("732342.973");
+        latValue.add("732340.11");
+        latValue.add("732331.657");
+        latValue.add("732322.042");
+        latValue.add("732314.02");
+        latValue.add("732306.581");
+        latValue.add("732298.091");
+        latValue.add("732291.749");
+        latValue.add("732285.906");
+        latValue.add("732281.824");
 
 
-        latValue.add("28.628098");
-        latValue.add("28.627054");
-        latValue.add("28.627064");
-        latValue.add("28.627075");
-        latValue.add("28.627086");
-        latValue.add("28.627093");
-        latValue.add("28.627263");
-        latValue.add("28.627343");
-        latValue.add("28.628084");
-        latValue.add("28.628093");
 
 
 
-
-
-        lngValue.add("77.377023");
-        lngValue.add("77.378269");
-        lngValue.add("77.378259");
-        lngValue.add("77.378246");
-        lngValue.add("77.378235");
-        lngValue.add("77.378226");
-        lngValue.add("77.378012");
-        lngValue.add("77.377807");
-        lngValue.add("77.377037");
-        lngValue.add("77.377029");
-
-
+        lngValue.add("3167390.499");
+        lngValue.add("3167375.929");
+        lngValue.add("3167376.013");
+        lngValue.add("3167376.078");
+        lngValue.add("3167382.067");
+        lngValue.add("3167391.214");
+        lngValue.add("3167400.552");
+        lngValue.add("3167409.803");
+        lngValue.add("3167417.232");
+        lngValue.add("3167421.375");
+        lngValue.add("3167422.013");
+        lngValue.add("3167420.59");
+        lngValue.add("3167416.748");
+        lngValue.add("3167411.583");
+        lngValue.add("3167406.066");
+        lngValue.add("3167397.932");
+        lngValue.add("3167390.499");
 
 
 
@@ -401,7 +427,7 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
                 String converted = latLon2UTM.UTM2Deg(zone1+" "+eastng+" "+nrthng);
                  latiii = converted.split(",")[0];
                 longii = converted.split(",")[1];
-             //   abc(latValue.get(0), lngValue.get(0));
+               //abc(latValue.get(0), lngValue.get(0));
                 a1.setText(eastng);
                 a2.setText(nrthng);
                  pointplotStake();
@@ -418,9 +444,8 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
         minusbtn = findViewById(R.id.minus);
         video = findViewById(R.id.video);
 
-       /* if (!isFromStake) {
-            timerHandler.postDelayed(timerRunnable, 0);
-        }*/
+
+
         addbtn.setOnClickListener(v -> {
             pointsPlus = pointsPlus+2;
             pointplus();
@@ -459,6 +484,10 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
 
 
         });
+
+        if(!isFromStake){
+            timerHandler.postDelayed(timerRunnable, 0);
+        }
 
         // initialize your android device sensor capabilities
         mSensorManager = (SensorManager) getSystemService(SENSOR_SERVICE);
@@ -580,6 +609,7 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
        String lonngggll = vlll.split("_")[1];
         double  longitude = Double.parseDouble(lonngggll);
         String get = latLon2UTM.convertLatLonToUTM(latitude,longitude);
+      //  String get = latLon2UTM.convertLatLonToUTM(Double.parseDouble(Lat),Double.parseDouble(Lon));
          getlocale = get.split(" ")[0];
         String geteasting = get.split(" ")[1];
         Easting = Double.parseDouble(geteasting);
@@ -591,7 +621,7 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
         a2.setText(valueOf(Northing));
         if (!isFromStake) {
             if (simpleSwitch.isChecked()) {
-                timeSurveyNew(Easting, Northing);
+               timeSurveyNew(Easting, Northing);
                 pointplot();
             }else {
                 distance = Double.parseDouble( AutoMap.vall.getText().toString());
@@ -677,7 +707,6 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
     private void displayData(String data) {
         if (data != null) {
 
-            /******/
             if (data.contains("@@@@")) {
                 try {
                     String packet_no = data.split(",")[1];
@@ -697,11 +726,11 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
                 String[] somedata = data.split("\\r?\\n");
                 int length = somedata.length;
                 if (length > 1) {
-                    for (int i = 0; i < somedata.length; i++) {
-                        normalparse(somedata[i]);
+                    for (String somedatum : somedata) {
+                        normalparse(somedatum);
                     }
                 }
-                somedata = null;
+
             }
         }
     }
@@ -759,10 +788,10 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
     public void lastparse(String val) {
         if (val != null) {
             String lines[] = val.split("\\r?\\n");
-            for (int i = 0; i < lines.length; i++) {
-                normalparse(lines[i]);
+            for (String line : lines) {
+                normalparse(line);
             }
-            lines = null;
+
         }
 
     }
@@ -904,13 +933,7 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
     }
 
     //for stake plot rtk points
-    private void
-
-
-
-
-
-    pointplotStake() {
+    private void pointplotStake() {
         String a4 = a1.getText().toString().trim();
         double value1 = Double.parseDouble(a4);
         String a5 = a2.getText().toString().trim();
@@ -931,6 +954,9 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
         double maxY;
 
         double distancee = latLon2UTM.calculateDistanceBetweenPoints(referenceX,referenceY, value1, value2);
+        tvdistance.setVisibility(View.VISIBLE);
+        double distnce =  Double.parseDouble(new DecimalFormat("##.###").format(distancee));
+        tvdistance.setText("Distance :" + distnce +"meters");
         if(distancee > 0.0 && distancee < 0.2){
             if(isFirstReferencepoint2){
                 isFirstReferencepoint2 = false;
@@ -1113,6 +1139,7 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
                                 canvas.drawBitmap(operation, new Matrix(), null);
                                 canvas.drawCircle(i, j, 8, paint);
                             }else if(k == xpixel.size() - 1) {
+                                findtwoPointsDistance(referValueX.get(0),referValueY.get(0),referValueX.get(k), referValueY.get(k));
                                 paint.setColor(Color.GREEN);
                                 paint.setStrokeWidth(5);
                                 canvas.drawBitmap(operation, new Matrix(), null);
@@ -1696,8 +1723,6 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
     public void saveVideoData(Uri videoUri){
         try {
 
-            File newfile;
-
             AssetFileDescriptor videoAsset = getContentResolver().openAssetFileDescriptor(videoUri, "r");
             FileInputStream in = videoAsset.createInputStream();
 
@@ -1708,6 +1733,7 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
             }
 
             newfile = new File(dir, "save_"+System.currentTimeMillis()+".mp4");
+            long result = dbTask.updatevideopoint(newfile.getAbsolutePath(),String.valueOf(tskid),recordtype);
 
             if (newfile.exists()) newfile.delete();
 
@@ -1732,6 +1758,19 @@ public class StakeMapCustom extends Activity  implements View.OnTouchListener , 
             e.printStackTrace();
         }
 
+    }
+
+
+    public void findtwoPointsDistance(double x1 , double y1 , double x2 , double y2){
+       final double x = 0, y;
+        final double
+                v = (y2 - y1) / (x2 - x1) ;
+        y = v - v*x1 + y1;
+        double atan = Math.atan(v);
+        atan =  Double.parseDouble(new DecimalFormat("##.###").format(atan));
+        Log.d("check---", String.valueOf(atan));
+        double degree = (PI / 180) * atan;
+        Log.d("degree---", String.valueOf(atan));
     }
 
 

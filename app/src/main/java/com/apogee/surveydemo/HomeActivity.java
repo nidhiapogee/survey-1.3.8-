@@ -1,12 +1,9 @@
 package com.apogee.surveydemo;
-import android.app.ActivityManager;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
@@ -34,8 +31,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
-
-import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.viewpager.widget.ViewPager;
@@ -44,7 +39,6 @@ import com.apogee.surveydemo.Database.DatabaseOperation;
 import com.apogee.surveydemo.Fragment.Surveyfragment;
 import com.apogee.surveydemo.Fragment.DeviceFragment;
 import com.apogee.surveydemo.Fragment.ProjectFragment;
-import com.apogee.surveydemo.Generic.taskGeneric;
 import com.apogee.surveydemo.model.BleModel;
 import com.apogee.surveydemo.utility.BLEService;
 import com.apogee.surveydemo.utility.BluetoothLeService;
@@ -53,11 +47,9 @@ import com.apogee.surveydemo.utility.DeviceScanActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.Locale;
 
 import static com.apogee.surveydemo.tasklist.Name;
-import static com.apogee.surveydemo.utility.DeviceControlActivity.Configname;
 import static com.apogee.surveydemo.utility.DeviceControlActivity.dvcstatus;
 
 public class HomeActivity extends AppCompatActivity implements View.OnClickListener,TextToSpeech.OnInitListener {
@@ -69,8 +61,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     //This is our viewPager
     private ViewPager viewPager;
     ProgressDialog progressDoalog;
-    ArrayList<String> checksumlist = new ArrayList<>();
-    int pktno,datalenghth=0;
+    int pktno;
     int totalnoofpkts=0;
     ArrayList<String> datalist = new ArrayList<>();
     private TextView mConnectionState,bttxt,sattxt,stsssstxt;
@@ -84,14 +75,10 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     ProjectFragment projectFragment;
     Surveyfragment contactFragment;
     MenuItem prevMenuItem;
-    private String mDeviceAddress;
+     String mDeviceAddress;
 
     private BluetoothLeService mBluetoothLeService;
-    private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
-            new ArrayList<>();
-    private boolean mConnectedd = false;
-    private BluetoothGattCharacteristic mNotifyCharacteristic;
-
+     boolean mConnectedd = false;
     String operation = "";
 
     private TextToSpeech tts;
@@ -222,22 +209,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         bottomNavigationView = findViewById(R.id.bottom_navigation);
 
         bottomNavigationView.setOnNavigationItemSelectedListener(
-                new BottomNavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                        switch (item.getItemId()) {
-                            case R.id.p1:
-                                viewPager.setCurrentItem(0);
-                                break;
-                            case R.id.p2:
-                                viewPager.setCurrentItem(1);
-                                break;
-                            case R.id.p3:
-                                viewPager.setCurrentItem(2);
-                                break;
-                        }
-                        return false;
+                item -> {
+                    switch (item.getItemId()) {
+                        case R.id.p1:
+                            viewPager.setCurrentItem(0);
+                            break;
+                        case R.id.p2:
+                            viewPager.setCurrentItem(1);
+                            break;
+                        case R.id.p3:
+                            viewPager.setCurrentItem(2);
+                            break;
                     }
+                    return false;
                 });
 
         viewPager.addOnPageChangeListener(new ViewPager.OnPageChangeListener() {
@@ -279,11 +263,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
            invalidateOptionsMenu();
            mConnectedd=true;
        }
-
-
-      /*  Intent gattServiceIntent = new Intent(this, BluetoothLeService.class);
-        bindService(gattServiceIntent, mServiceConnection, BIND_AUTO_CREATE);*/
-
         setupViewPager(viewPager);
     }
     
@@ -299,13 +278,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
             @Override
             public void onConfig() {
-                final SharedPreferences sharedPreferences = PreferenceManager
-                        .getDefaultSharedPreferences(HomeActivity.this);
                 final Intent intent = new Intent(HomeActivity.this, DeviceControlActivity.class);
-              /* intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_NAME, sharedPreferences.getString(DeviceControlActivity.EXTRAS_DEVICE_NAME,""));
-                intent.putExtra(DeviceControlActivity.EXTRAS_DEVICE_ADDRESS, sharedPreferences.getString(DeviceControlActivity.EXTRAS_DEVICE_ADDRESS,""));
-                intent.putExtra("device_id","61");
-                intent.putExtra("dgps_device_id","1");*/
                 intent.putExtra("device_name", device_name1);
                 intent.putExtra("device_address", address);
                 intent.putExtra("device_id", device_id1);
@@ -340,11 +313,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
         builder1.setPositiveButton(
                 "oK",
-                new DialogInterface.OnClickListener() {
-                    public void onClick(DialogInterface dialog, int id) {
-                        dialog.cancel();
-                    }
-                });
+                (dialog, id) -> dialog.cancel());
 
         AlertDialog alert11 = builder1.create();
         alert11.show();
@@ -363,7 +332,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.updatedata:
                 prgrsdlg();
                 Intent intentService = new Intent(HomeActivity.this, BLEService.class);
-                BleModel bleModel = new BleModel(this);
                 startService(intentService);
                 return true;
             default:
@@ -378,22 +346,19 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         progressDoalog.setTitle(getString(R.string.updating_database));
         progressDoalog.setProgressStyle(ProgressDialog.STYLE_HORIZONTAL);
         progressDoalog.show();
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    while (progressDoalog.getProgress() <= progressDoalog
+        new Thread(() -> {
+            try {
+                while (progressDoalog.getProgress() <= progressDoalog
+                        .getMax()) {
+                    Thread.sleep(200);
+                    handle.sendMessage(handle.obtainMessage());
+                    if (progressDoalog.getProgress() == progressDoalog
                             .getMax()) {
-                        Thread.sleep(200);
-                        handle.sendMessage(handle.obtainMessage());
-                        if (progressDoalog.getProgress() == progressDoalog
-                                .getMax()) {
-                            progressDoalog.dismiss();
-                        }
+                        progressDoalog.dismiss();
                     }
-                } catch (Exception e) {
-                    e.printStackTrace();
                 }
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         }).start();
     }
@@ -421,25 +386,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
             case R.id.btrylay:
                 Toast.makeText(HomeActivity.this, getString(R.string.your_reciever_battery_status), Toast.LENGTH_LONG).show();
                 break;
-            case R.id.blelay:
-               /* if (mConnectedd && dca.mConnected) {
-                    mBluetoothLeService.disconnect();
-                    bleimg.setImageResource(R.drawable.ic_baseline_bluetooth_connected_24);
-                } else {
-                    mBluetoothLeService.connect(mDeviceAddress);
-                    bleimg.setImageResource(R.drawable.ic_baseline_bluetooth_disabled_24);
-                }*/
-                //  mBluetoothLeService.connect(mDeviceAddress,DeviceControlActivity.this,1);
-               // Toast.makeText(HomeActivity.this, "Bluetooth connection status", Toast.LENGTH_LONG).show();
-
-                /*if (mConnectedd) {
-                    mBluetoothLeService.disconnect();
-                    bleimg.setImageResource(R.drawable.ic_baseline_bluetooth_connected_24);
-                } else {
-                    mBluetoothLeService.connect(mDeviceAddress);
-                    bleimg.setImageResource(R.drawable.ic_baseline_bluetooth_disabled_24);
-                }*/
-                break;
             case R.id.statuslay:
                 Toast.makeText(HomeActivity.this, getString(R.string.rtk_status), Toast.LENGTH_LONG).show();
                 break;
@@ -447,12 +393,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     }
 
     private void updateConnectionState(final int resourceId) {
-        runOnUiThread(new Runnable() {
-            @Override
-            public void run() {
-                mConnectionState.setText(resourceId);
-            }
-        });
+        runOnUiThread(() -> mConnectionState.setText(resourceId));
     }
 
     private void displayData(String data) {
@@ -478,17 +419,16 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 String[] somedata = data.split("\\r?\\n");
                 int length=somedata.length;
                 if(length>1){
-                    for(int i=0; i<somedata.length;i++){
-                        normalparse(somedata[i]);
+                    for (String somedatum : somedata) {
+                        normalparse(somedatum);
                     }
                 }
-                somedata=null;
+
             }
             if(!gnggaenable){
                 if(data.contains("$PUBX")) {
                     try {
                         //$PUBX,00,052910.00,2231.67651,N,07255.16919,E,-15.520,G3,10,14,0.947,317.09,-0.075,,1.21,2.38,1.73,10,0,0*61
-                        //$PUBX,00,052150.00,2231.67867,N,07255.16959,E,-11.305,D3,0.31,0.62,0.014,0.00,0.008,,0.62,1.06,0.82,26,0,0*40
                         String cmd[] = data.split("\\$");
                         String correction = cmd[1].split(",")[8];
                         String numsvrs = cmd[1].split(",")[18];
@@ -502,18 +442,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
 
                         if(correction.equalsIgnoreCase("G3")){
-                           // if(dvcstatus!=null && dvcstatus.equalsIgnoreCase("31")){
                                 stsssstxt.setText(getString(R.string.in_process));
                                 imgbtn.setImageResource(R.drawable.ic_baseline_sync_24);
-
-
-                            //}
-
-
-
                         }else  if( correction.equalsIgnoreCase("TT")) {
-                            //if(dvcstatus!=null && dvcstatus.equalsIgnoreCase("31")){
-
                             if(isLatLng && configName!=null){
                                 dbTask.open();
                                 isLatLng = false;
@@ -530,7 +461,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
 
                             stsssstxt.setText(getString(R.string.success));
                                 imgbtn.setImageResource(R.drawable.ic_baseline_done_24);
-                            //}
                         }
                         sattxt.setText(numsvrs);
                     } catch (Exception e) {
@@ -594,10 +524,9 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public void lastparse(String val){
         if(val != null){
             String lines[] = val.split("\\r?\\n");
-            for(int i=0; i<lines.length;i++){
-                normalparse(lines[i]);
+            for (String line : lines) {
+                normalparse(line);
             }
-            lines=null;
         }
 
     }
@@ -859,8 +788,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
                 Log.e(TAG, "Unable to initialize Bluetooth");
                 finish();
             }
-            // Automatically connects to the device upon successful start-up initialization.
-            /* mBluetoothLeService.connect(mDeviceAddress);*/
         }
 
         @Override
@@ -874,8 +801,7 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         super.onResume();
         registerReceiver(mGattUpdateReceiver, makeGattUpdateIntentFilter());
         if (mBluetoothLeService != null) {
-            // final boolean result = mBluetoothLeService.connect(mDeviceAddress,CRS_sattelite.this,device_id,opid);
-            //  Log.d(TAG, "Connect request result=" + result);
+
         }
     }
 
@@ -945,28 +871,20 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         final Button button = dialogView.findViewById(R.id.yes);
         final Button cancel = dialogView.findViewById(R.id.cancel);
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mBluetoothLeService = null;
-                Intent intent = new Intent(HomeActivity.this, DeviceScanActivity.class);
-                intent.putExtra("device_name", device_name1);
-                intent.putExtra("device_address", address);
-                intent.putExtra("device_id", device_id1);
-                intent.putExtra("dgps_device_id", dgps_device_id1);
-                intent.putExtra(" selectedmodeule" ,selectedmodeule);
-                startActivity(intent);
-                finish();
-                DeviceControlActivity.finishActivity.finish();
-            }
+        button.setOnClickListener(v -> {
+            mBluetoothLeService = null;
+            Intent intent = new Intent(HomeActivity.this, DeviceScanActivity.class);
+            intent.putExtra("device_name", device_name1);
+            intent.putExtra("device_address", address);
+            intent.putExtra("device_id", device_id1);
+            intent.putExtra("dgps_device_id", dgps_device_id1);
+            intent.putExtra(" selectedmodeule" ,selectedmodeule);
+            startActivity(intent);
+            finish();
+            DeviceControlActivity.finishActivity.finish();
         });
 
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogBuilder.dismiss();
-            }
-        });
+        cancel.setOnClickListener(v -> dialogBuilder.dismiss());
 
         dialogBuilder.setView(dialogView);
         dialogBuilder.show();
@@ -979,8 +897,6 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
     public boolean onKeyDown(int keyCode, KeyEvent event) {
         if (keyCode == KeyEvent.KEYCODE_BACK) {
             exitByBackKey();
-
-            //moveTaskToBack(false);
 
             return true;
         }
@@ -996,32 +912,18 @@ public class HomeActivity extends AppCompatActivity implements View.OnClickListe
         final TextView button = dialogView.findViewById(R.id.turnof);
         final TextView cancel = dialogView.findViewById(R.id.cancel);
 
-        exit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-             //   finish();
-                dialogBuilder.dismiss();
-                finishAffinity();
-            }
+        exit.setOnClickListener(v -> {
+            dialogBuilder.dismiss();
+            finishAffinity();
         });
 
-        button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                mBluetoothLeService = null;
-             //   finish();
-                dialogBuilder.dismiss();
-                finishAffinity();
-               // DeviceControlActivity.finishActivity.finish();
-            }
+        button.setOnClickListener(v -> {
+            mBluetoothLeService = null;
+            dialogBuilder.dismiss();
+            finishAffinity();
         });
 
-        cancel.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                dialogBuilder.dismiss();
-            }
-        });
+        cancel.setOnClickListener(v -> dialogBuilder.dismiss());
 
         dialogBuilder.setView(dialogView);
         dialogBuilder.show();

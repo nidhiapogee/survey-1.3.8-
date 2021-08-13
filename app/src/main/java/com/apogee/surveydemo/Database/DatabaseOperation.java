@@ -468,7 +468,8 @@ public class DatabaseOperation {
         return a;
     }
 
-    public boolean insertTopo(String recordtype,String ptnm,String ptcod,int tkid,double estng,double nrthng, String elvtn,double hacc, double vacc, String antenaht , String prsntime,String zone){
+    public boolean insertTopo(String recordtype,String ptnm,String ptcod,int tkid,double estng,double nrthng,
+                              String elvtn,double hacc, double vacc, String antenaht , String prsntime,String zone){
         Calendar cc = Calendar.getInstance();
         Date todayDate = Calendar.getInstance().getTime();
         SimpleDateFormat formatter = new SimpleDateFormat("dd-MM-yyyy", Locale.ENGLISH);
@@ -496,6 +497,38 @@ public class DatabaseOperation {
         contentValues.put("zone",zone);
         database.insert("survgey_data",null,contentValues);
         return true;
+    }
+
+    public List<String> gettaskid() {
+        ArrayList<String> list = new ArrayList<>();
+        try {
+            Cursor cursor = database.rawQuery("SELECT task_id FROM survgey_data", null);
+            for (int i = 0; i < cursor.getCount(); i++) {
+                cursor.moveToPosition(i);
+                if(!list.contains(cursor.getString(0))) {
+                    list.add(cursor.getString(0));
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "getItemData error: " + e);
+        }
+        return list;
+    }
+
+    public List<String> gettaskSurvey() {
+        ArrayList<String> list = new ArrayList<>();
+        try {
+            Cursor cursor = database.rawQuery("SELECT RecordType FROM survgey_data", null);
+            for (int i = 0; i < cursor.getCount(); i++) {
+                cursor.moveToPosition(i);
+                if(!list.contains(cursor.getString(0))) {
+                    list.add(cursor.getString(0));
+                }
+            }
+        } catch (Exception e) {
+            Log.e(TAG, "getItemData error: " + e);
+        }
+        return list;
     }
 
 
@@ -1027,6 +1060,27 @@ public class DatabaseOperation {
     }
 
 
+    public long updatevideopoint(String videoPath,String id,String recordType) {
+        long result = 0;
+        String task_id = "task_id";
+        String RecordType = "RecordType";
+        try {
+            database.beginTransaction();
+            ContentValues values = new ContentValues();
+            values.put("VideoPath",videoPath);
+            result = database.update("survgey_data", values,  ""+task_id+"= '"+ id+"'  AND "+RecordType+"='"+recordType+"'", null);
+            if (result > 0) {
+                database.setTransactionSuccessful();
+            }
+        }
+        catch (Exception e) {
+            Log.e(TAG, "insertcommand error: " + e);
+        } finally {
+            database.endTransaction();
+        }
+        return result;
+    }
+
     public long updatepoint(String lat,String lon,String alt,String id) {
         long result = 0;
         try {
@@ -1035,7 +1089,7 @@ public class DatabaseOperation {
             values.put("Easting",lat);
             values.put("Northing", lon);
             values.put("Elevation", alt);
-            result = database.update("survgey_data", values, "idtopo_survey="+id, null);
+            result = database.update("survgey_data", values, "idtopo_survey="+id , null);
 
             if (result > 0) {
                 database.setTransactionSuccessful();
@@ -1317,8 +1371,9 @@ public class DatabaseOperation {
         String idtopo_survey;
         String Elevation;
         String zone;
+        String videoPath;
         try {
-            Cursor cursor = database.rawQuery("SELECT Easting,Northing,point_name,idtopo_survey,Elevation,zone FROM survgey_data WHERE RecordType='"+tos+"' AND task_id="+tskid+"", null);
+            Cursor cursor = database.rawQuery("SELECT Easting,Northing,point_name,idtopo_survey,Elevation,zone,VideoPath FROM survgey_data WHERE RecordType='"+tos+"' AND task_id="+tskid+"", null);
             cursor.moveToPosition(0);
             int a= cursor.getCount();
             for (int i = 0; i < cursor.getCount(); i++) {
@@ -1329,8 +1384,8 @@ public class DatabaseOperation {
                 idtopo_survey=(cursor.getString(3));
                 Elevation=(cursor.getString(4));
                 zone=(cursor.getString(5));
-
-                String val = Easting+","+Northing+","+pointname+","+idtopo_survey+","+Elevation+","+zone;
+                videoPath = (cursor.getString(6));
+                String val = Easting+","+Northing+","+pointname+","+idtopo_survey+","+Elevation+","+zone+","+videoPath;
                 list.add(val);
             }
         } catch (Exception e) {

@@ -2,26 +2,44 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     style="@style/matchWarp"
-    android:layout_margin="@dimen/_10sdp">
+    android:layout_margin="@dimen/_10sdp"
+    android:weightSum="3">
+
 
     <TextView
         android:id="@+id/txtinput"
-        style="@style/matchWarp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_eighteen"
         android:textColor="@color/textColorPrimary"
         android:layout_weight="0.5"
         android:layout_margin="@dimen/_10sdp"
         android:textStyle="bold"
-        android:text="TextView" />
+        android:text="TextView"
+        android:layout_gravity="center_vertical"/>
 
     <TextView
         android:id="@+id/txtinput2"
-        style="@style/matchWarp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:textSize="@dimen/text_size_fifteen"
         android:layout_margin="@dimen/_10sdp"
         android:textStyle="bold"
         android:textColor="@color/textColorPrimary"
         android:text="Textview2"
-        android:layout_weight="0.5" />
+        android:layout_weight="1.7"
+        android:gravity="end"/>
+
+    <Button
+        android:id="@+id/btView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="0.6"
+        android:layout_gravity="center_vertical"
+        android:text="@string/view"
+        android:visibility="gone"
+        android:textAllCaps="false">
+
+    </Button>
 
 </LinearLayout>

@@ -1,24 +1,33 @@
 package com.apogee.surveydemo;
 
 
+import android.Manifest;
 import android.annotation.SuppressLint;
+import android.app.Activity;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.IntentFilter;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
+import android.content.res.AssetFileDescriptor;
 import android.graphics.Bitmap;
 import android.graphics.Color;
 import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.ColorDrawable;
 import android.media.MediaPlayer;
+import android.net.Uri;
+import android.os.Build;
 import android.os.CountDownTimer;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
 import android.os.Bundle;
+import android.provider.MediaStore;
 import android.speech.tts.TextToSpeech;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -38,6 +47,8 @@ import android.widget.Toast;
 import android.widget.Toolbar;
 
 import androidx.appcompat.app.AlertDialog;
+import androidx.core.app.ActivityCompat;
+import androidx.core.content.ContextCompat;
 import androidx.fragment.app.FragmentActivity;
 
 import com.apogee.surveydemo.Database.DatabaseOperation;
@@ -56,12 +67,19 @@ import com.google.android.gms.maps.model.MarkerOptions;
 import org.apache.commons.lang3.StringUtils;
 
 
+import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.OutputStream;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
+import java.util.List;
 import java.util.Locale;
 
 import ru.dimorinny.floatingtextbutton.FloatingTextButton;
 
+import static android.graphics.Bitmap.CompressFormat.PNG;
 import static com.apogee.surveydemo.Generic.taskGeneric.Name;
 
 public class TopoMap extends FragmentActivity implements OnMapReadyCallback,TextToSpeech.OnInitListener {
@@ -82,7 +100,7 @@ public class TopoMap extends FragmentActivity implements OnMapReadyCallback,Text
     ArrayList<LatLng> points = null;
     private GoogleMap mMap;
     Marker marker;
-    FloatingTextButton btn1,viewMap;
+    FloatingTextButton btn1,viewMap,btimage;
     TextView status,st,estng,nrthng,zvalt,accuracybasetext,antennaht,hzpcn,vtpcn;
     EditText pname,pcode;
     String finalpoint;
@@ -105,8 +123,12 @@ public class TopoMap extends FragmentActivity implements OnMapReadyCallback,Text
     private boolean isRTKFSpeak = true;
     private boolean isEstimatedSpeak = true;
     private boolean isManualSpeak = true;
+    List<String> taskid = new ArrayList<>();
+    List<String> recordSurvey = new ArrayList<>();
+    private static final int PERMISSION_REQUEST_CODE = 200;
+    private static final int CAMERA_REQUEST = 1888;
 
-
+    File newfile;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -128,6 +150,7 @@ public class TopoMap extends FragmentActivity implements OnMapReadyCallback,Text
         hzpcn = findViewById(R.id.hzpcn);
         vtpcn = findViewById(R.id.vtpcn);
         viewMap = findViewById(R.id.viewMap);
+        btimage = findViewById(R.id.btimage);
         accuracybasetext=findViewById(R.id.accuracybasetext);
         antennaht=findViewById(R.id.antennaht);
         pcode=findViewById(R.id.pcode);
@@ -153,8 +176,135 @@ public class TopoMap extends FragmentActivity implements OnMapReadyCallback,Text
         }
         dbTask.open();
         tskid = dbTask.gettaskid(taskname);
+        taskid =  dbTask.gettaskid();
+        recordSurvey =  dbTask.gettaskSurvey();
         tts = new TextToSpeech(this, this);
+
+        btimage.setOnClickListener(v -> {
+            if (checkPermission()) {
+                //main logic or main code
+
+                // . write your main code to execute, It will execute if the permission is already given.
+
+                Intent takeVideoIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                if (takeVideoIntent.resolveActivity(getPackageManager()) != null) {
+                    startActivityForResult(takeVideoIntent, CAMERA_REQUEST);
+                }
+
+            } else {
+                requestPermission();
+            }
+        });
     }
+
+    private boolean checkPermission() {
+        // Permission is not granted
+        return ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA) == PackageManager.PERMISSION_GRANTED;
+    }
+
+    private void requestPermission() {
+
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.CAMERA},
+                PERMISSION_REQUEST_CODE);
+    }
+
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, String permissions[], int[] grantResults) {
+        if (requestCode == PERMISSION_REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                Toast.makeText(getApplicationContext(), getString(R.string.permission_granted), Toast.LENGTH_SHORT).show();
+
+                // main logic
+                Intent cameraIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+                startActivityForResult(cameraIntent, CAMERA_REQUEST);
+            } else {
+                Toast.makeText(getApplicationContext(), getString(R.string.permission_denied), Toast.LENGTH_SHORT).show();
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                    if (ContextCompat.checkSelfPermission(this, Manifest.permission.CAMERA)
+                            != PackageManager.PERMISSION_GRANTED) {
+
+                        showMessageOKCancel(getString(R.string.you_need_to_allow_access_permissions), (DialogInterface.OnClickListener) (dialog, which) -> {
+                            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                                requestPermission();
+                            }
+                        });
+                    }
+                }
+            }
+        }
+    }
+
+    private void showMessageOKCancel(String message, DialogInterface.OnClickListener okListener) {
+        new AlertDialog.Builder(TopoMap.this)
+                .setMessage(message)
+                .setPositiveButton(getString(R.string.ok), okListener)
+                .setNegativeButton(getString(R.string.cancel), null)
+                .create()
+                .show();
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
+        if (requestCode == CAMERA_REQUEST && resultCode == Activity.RESULT_OK) {
+            Bitmap photo = (Bitmap) data.getExtras().get("data");
+            saveImageData(getImageUri(photo,PNG,100));
+
+
+        }
+    }
+
+    public Uri getImageUri(Bitmap src, Bitmap.CompressFormat format, int quality) {
+        ByteArrayOutputStream os = new ByteArrayOutputStream();
+        src.compress(format, quality, os);
+
+        String path = MediaStore.Images.Media.insertImage(getContentResolver(), src, "title", null);
+        return Uri.parse(path);
+    }
+
+    public void saveImageData(Uri videoUri){
+        try {
+
+            AssetFileDescriptor videoAsset = getContentResolver().openAssetFileDescriptor(videoUri, "r");
+            FileInputStream in = videoAsset.createInputStream();
+
+            File filepath = Environment.getExternalStorageDirectory();
+            File dir = new File(filepath.getAbsolutePath() + "/" +"Topo Survey" + "/");
+            if (!dir.exists()) {
+                dir.mkdirs();
+            }
+
+            newfile = new File(dir, "save_"+System.currentTimeMillis()+".jpg");
+
+
+            if (newfile.exists()) newfile.delete();
+
+
+
+            OutputStream out = new FileOutputStream(newfile);
+
+            // Copy the bits from instream to outstream
+            byte[] buf = new byte[1024];
+            int len;
+
+            while ((len = in.read(buf)) > 0) {
+                out.write(buf, 0, len);
+            }
+
+            in.close();
+            out.close();
+
+            Log.v("", "Copy file successful.");
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+    }
+
+
     /**
      * Manipulates the map once available.
      * This callback is triggered when the map is ready to be used.
@@ -215,27 +365,35 @@ public class TopoMap extends FragmentActivity implements OnMapReadyCallback,Text
 
       
         btn1.setOnClickListener(v -> new CountDownTimer(2000, 1000) {
+
             public void onTick(long millisUntilFinished) {
                 btn1.setBackgroundColor(getResources().getColor(R.color.colorred));
                 btn1.setClickable(false);
             }
 
             public void onFinish() {
-                if(!firstclk){
-                    pointname = pname.getText().toString();
-                    firstclk=true;
-                }
-                if(!pointname.equalsIgnoreCase("")){
-                    mediaPlayer = MediaPlayer.create(TopoMap.this, R.raw.beeppointtwo);
-                    mediaPlayer.start();
-                    topopoints(pointname);
-                    btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
-                    btn1.setClickable(true);
-                }else{
-                    Toast.makeText(TopoMap.this, getString(R.string.please_enter_any_point_name), Toast.LENGTH_SHORT).show();
-                    btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
-                    btn1.setClickable(true);
-                }
+                 if(!taskid.contains(String.valueOf(tskid)) || !recordSurvey.contains("Topo Survey")){
+                     if(!firstclk){
+                         pointname = pname.getText().toString();
+                         firstclk=true;
+                     }
+                     if(!pointname.equalsIgnoreCase("")){
+                         mediaPlayer = MediaPlayer.create(TopoMap.this, R.raw.beeppointtwo);
+                         mediaPlayer.start();
+                         topopoints(pointname);
+                         btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
+                         btn1.setClickable(true);
+                     }else{
+                         Toast.makeText(TopoMap.this, getString(R.string.please_enter_any_point_name), Toast.LENGTH_SHORT).show();
+                         btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
+                         btn1.setClickable(true);
+                     }
+                 }else {
+                     Toast.makeText(TopoMap.this, "Please create another task", Toast.LENGTH_SHORT).show();
+                     btn1.setBackgroundColor(getResources().getColor(R.color.colorgreen));
+                     btn1.setClickable(true);
+                 }
+
 
             }
         }.start());
@@ -295,6 +453,7 @@ public class TopoMap extends FragmentActivity implements OnMapReadyCallback,Text
         pname.setText(finalpoint);
         //*Database insertion part*//*
         boolean result = dbTask.insertTopo(TAG,finalpoint,pointcode,tskid,easting,northing,finalalti,Double.parseDouble(hAcc),Double.parseDouble(vAcc),antennaheight,StatusData,getlocale);
+        long results = dbTask.updatevideopoint(newfile.getAbsolutePath(),String.valueOf(tskid),TAG);
         if (result) {
             System.out.println("Data inserted");
             Toast.makeText(TopoMap.this, getString(R.string.data_inserted), Toast.LENGTH_SHORT).show();
@@ -596,9 +755,9 @@ public class TopoMap extends FragmentActivity implements OnMapReadyCallback,Text
 
     }
 
-    String hAcc;
+    String hAcc = "0.0";
     String HAE;
-    String vAcc;
+    String vAcc = "0.0";
     String getlocale;
     double easting;
     double northing;

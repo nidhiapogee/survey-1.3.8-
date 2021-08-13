@@ -178,6 +178,7 @@
         <activity android:name=".SkyViewActivity"/>
 
         <activity android:name=".barchart.BarChartActivity" />
+        <activity android:name=".activity.AutoSurveyVideoActivity"/>
 
     </application>
 

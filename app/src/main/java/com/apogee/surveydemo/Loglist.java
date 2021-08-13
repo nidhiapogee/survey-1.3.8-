@@ -2,8 +2,6 @@ package com.apogee.surveydemo;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-
-import android.bluetooth.BluetoothGattCharacteristic;
 import android.content.BroadcastReceiver;
 import android.content.ComponentName;
 import android.content.Context;
@@ -38,20 +36,12 @@ public class Loglist extends AppCompatActivity {
     String dname;
     public static final String devicename = "devicenamepref";
     private BluetoothLeService mBluetoothLeService;
-    private ArrayList<ArrayList<BluetoothGattCharacteristic>> mGattCharacteristics =
-            new ArrayList<ArrayList<BluetoothGattCharacteristic>>();
-    private BluetoothGattCharacteristic mNotifyCharacteristic;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_loglist);
-
-       /* listView=findViewById(R.id.deviceListView);
-        listAdapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_list_item_1);
-        deviceList = new ArrayList<>();
-        listView.setAdapter(listAdapter);*/
         SharedPreferences sharedPreferences = PreferenceManager
                 .getDefaultSharedPreferences(Loglist.this);
 
@@ -59,21 +49,13 @@ public class Loglist extends AppCompatActivity {
         dname = sharedPreferences.getString(devicename, "default value");
         toolbar=findViewById(R.id.tool);
         toolbar.setNavigationIcon(R.drawable.ic_baseline_arrow_back_24);
-        toolbar.setNavigationOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                onBackPressed();
-            }
-        });
+        toolbar.setNavigationOnClickListener(view -> onBackPressed());
 
         chatView = findViewById(R.id.chat_view);
-        chatView.setOnSentMessageListener(new ChatView.OnSentMessageListener() {
-            @Override
-            public boolean sendMessage(ChatMessage chatMessage) {
-                String msg = chatView.getTypedMessage();
-                mBluetoothLeService.sendchat(msg);
-                return true;
-            }
+        chatView.setOnSentMessageListener(chatMessage -> {
+            String msg = chatView.getTypedMessage();
+            mBluetoothLeService.sendchat(msg);
+            return true;
         });
 
         chatView.setTypingListener(new ChatView.TypingListener() {
@@ -107,12 +89,9 @@ public class Loglist extends AppCompatActivity {
             final String action = intent.getAction();
             if (BluetoothLeService.ACTION_DATA_AVAILABLE.equals(action)) {
                 final Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    @Override
-                    public void run() {
-                        // Do something after 5s = 5000ms
-                        displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
-                    }
+                handler.postDelayed(() -> {
+                    // Do something after 5s = 5000ms
+                    displayData(intent.getStringExtra(BluetoothLeService.EXTRA_DATA));
                 }, 5000);
 
             }
@@ -140,14 +119,14 @@ public class Loglist extends AppCompatActivity {
                 String[] somedata = data.split("\\r?\\n");
                 int length=somedata.length;
                 if(length>1){
-                    for(int i=0; i<somedata.length;i++){
-                        chatView.addMessage(new ChatMessage(somedata[i],System.currentTimeMillis(), ChatMessage.Type.RECEIVED, dname));
+                    for (String somedatum : somedata) {
+                        chatView.addMessage(new ChatMessage(somedatum, System.currentTimeMillis(), ChatMessage.Type.RECEIVED, dname));
                     }
                 }else{
                     chatView.addMessage(new ChatMessage(data,System.currentTimeMillis(), ChatMessage.Type.RECEIVED, dname));
 
                 }
-                somedata=null;
+
             }
         }
     }
@@ -155,7 +134,7 @@ public class Loglist extends AppCompatActivity {
     public void dataparse(ArrayList<String> dataval){
         String actualKey = null;
         String finalpayv = null;
-        int totalnoofpkts = 0,datalenghth=0,pktno=0;
+        int totalnoofpkts = 0,datalenghth,pktno=0;
         for(int i=0;i<dataval.size();i++){
             String val = dataval.get(i);
             if(val.contains("@@@@")){
@@ -205,11 +184,11 @@ public class Loglist extends AppCompatActivity {
     public void lastparse(String val){
         if(val != null){
             String lines[] = val.split("\\r?\\n");
-            for(int i=0; i<lines.length;i++){
-                chatView.addMessage(new ChatMessage(lines[i],System.currentTimeMillis(), ChatMessage.Type.RECEIVED, dname));
+            for (String line : lines) {
+                chatView.addMessage(new ChatMessage(line, System.currentTimeMillis(), ChatMessage.Type.RECEIVED, dname));
 
             }
-            lines=null;
+
         }
 
     }
